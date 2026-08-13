@@ -1,4 +1,4 @@
-# Module 2: Spring Boot & Microservices
+# Module 6: Microservices
 
 > **Scope:** IoC/DI, AOP, Security, Service Discovery, Distributed Tracing, Resilience, REST API Design
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

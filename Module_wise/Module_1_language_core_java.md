@@ -1,4 +1,4 @@
-# Module 1: Core Java & Concurrency
+# Module 1: Language (Core Java)
 
 > **Scope:** Multithreading, JVM Internals, Collections Framework, Functional Programming, Memory Model
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
@@ -791,3 +791,40 @@ Comparator<Employee> nullSafe = Comparator.nullsLast(
 ```
 
 **⚠️ Pitfall:** Never use `a.salary - b.salary` in comparators — integer overflow produces wrong results. Always use `Integer.compare()` or `Comparator.comparingInt()`.
+
+---
+
+### Q32. 🧩 What is a marker interface in spring boot (Java)?
+
+**A marker interface is an interface that has no methods or fields. It simply "marks" a class to indicate that it possesses a certain property or behavior to the JVM or framework.**
+
+- In core Java, examples are `Serializable`, `Cloneable`, and `RandomAccess`.
+- While Spring doesn't heavily rely on marker interfaces directly, an older example in the Spring ecosystem would be the `Aware` super-interface (though its sub-interfaces have methods). Generally, Spring Boot prefers annotations (like `@Component`, `@Service`) over marker interfaces to tag classes and provide metadata. If the interviewer asked specifically about "spring boot", they might be testing your fundamental Java knowledge or referring to how annotations have largely replaced the need for marker interfaces in modern frameworks.
+
+---
+
+### Q33. 🛠️ Functional interface in spring boot (Java)
+
+**A functional interface is a Java 8 concept—an interface that contains exactly one abstract method. They can have multiple default or static methods. They are used extensively in lambda expressions and method references.**
+
+- In the context of Spring Boot/Java, examples include `Runnable`, `Callable`, `Comparator`, `Predicate`, `Function`, `Consumer`, and `Supplier`.
+- Spring Framework specific examples: `ApplicationRunner` and `CommandLineRunner` (both have exactly one `run` method and are often used as functional interfaces to execute code at startup), `RowMapper` in Spring JDBC.
+
+---
+
+### Q34. 🔄 Difference between Runnable and Callable
+
+**Both are functional interfaces used to define a task that can be executed concurrently by a thread, but they have key differences:**
+
+- **Return Type**: `Runnable`'s `run()` method returns `void` (no result). `Callable`'s `call()` method returns a generic result (`V`).
+- **Exception Handling**: `Runnable`'s `run()` method cannot throw checked exceptions (they must be caught inside). `Callable`'s `call()` method can throw a checked `Exception`.
+- **Usage**: `Runnable` can be used with `Thread` or `ExecutorService`. `Callable` can only be executed by `ExecutorService` (which returns a `Future` object to retrieve the result later).
+
+---
+
+### Q35. 🗺️ Use of flatMap()
+
+**`flatMap()` is a method in Java 8 Streams used for both transformation (mapping) and flattening.**
+
+- While `map()` transforms each element into a single new value, `flatMap()` transforms each element into a stream of zero or more values, and then flattens all those generated streams into a single, continuous stream.
+- **Use case**: If you have a `List<List<String>>` and you want a single `List<String>` containing all the inner strings, you would use `flatMap(List::stream)`. It's used to deal with nested structures and one-to-many relationships in data processing.

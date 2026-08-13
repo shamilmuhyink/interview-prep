@@ -1,4 +1,4 @@
-# Module 3: Database & Performance
+# Module 3: DBMS (MySQL, PostgreSQL)
 
 > **Scope:** SQL Optimization, JPA/Hibernate, Caching, Indexing, N+1 Problem, Connection Pooling, PostgreSQL
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

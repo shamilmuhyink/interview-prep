@@ -1,4 +1,4 @@
-# Module 7: Data Structures & Algorithms
+# Module 9: DSA
 
 > **Scope:** Core Algorithms, Complexity Analysis, Custom DS Design, Memory Efficiency, JVM Cache Locality
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

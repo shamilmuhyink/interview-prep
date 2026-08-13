@@ -1,4 +1,4 @@
-# Module 6: DevOps, Cloud & Behavioral
+# Module 8: DevOps (Docker, docker-compose, k8s, aws)
 
 > **Scope:** Docker, Kubernetes, AWS, CI/CD (GitHub Actions, GitLab CI), Conflict Resolution, Project Ownership, Leadership
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

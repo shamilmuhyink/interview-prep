@@ -1,6 +1,6 @@
 # 🎯 Senior Full Stack Java Developer — Interview Preparation Kit
 
-> **Level:** Senior (5+ years) | **Total Questions:** 160 (8 Modules × 20 Questions)
+> **Level:** Senior (5+ years) | **Total Questions:** 180 (9 Modules × 20 Questions)
 > **Tech Stack:** Java 17+, Spring Boot 3, Microservices, Angular 16+, JPA/Hibernate, PostgreSQL, Docker, Kubernetes, AWS, CI/CD
 > **Coverage:** 🏢 Product-Based (Google, Amazon, Flipkart, Atlassian, Razorpay, PhonePe) & 🏬 Service-Based (TCS, Infosys, Wipro, HCL, Cognizant, Tech Mahindra, LTIMindtree) Companies
 
@@ -10,15 +10,20 @@
 
 | # | Module | Key Topics | File |
 |---|--------|-----------|------|
-| 1 | **Core Java & Concurrency** | Multithreading, JVM Internals, Collections, Functional Programming | [Module_1_Core_Java.md](Module_1_Core_Java.md) |
-| 2 | **Spring Boot & Microservices** | IoC/DI, AOP, Security, Service Discovery, Distributed Tracing, Resilience | [Module_2_Spring_Boot_Microservices.md](Module_2_Spring_Boot_Microservices.md) |
-| 3 | **Database & Performance** | SQL Optimization, Hibernate/JPA, Caching, Indexing, N+1 Problem | [Module_3_Database_Performance.md](Module_3_Database_Performance.md) |
-| 4 | **Frontend Architecture** | Angular Lifecycle, State Management, Rendering Strategies, Backend Integration | [Module_4_Frontend_Architecture.md](Module_4_Frontend_Architecture.md) |
-| 5 | **System Design & Architecture** | SOLID, Design Patterns, Scalability, Event-Driven Design, CQRS/Event Sourcing | [Module_5_System_Design.md](Module_5_System_Design.md) |
-| 6 | **DevOps, Cloud & Behavioral** | Containerization, K8s, AWS, CI/CD, Conflict Resolution, Project Ownership | [Module_6_DevOps_Cloud_Behavioral.md](Module_6_DevOps_Cloud_Behavioral.md) |
-| 7 | **Data Structures & Algorithms** | Core Algorithms, Complexity Analysis, Custom DS Design, Memory Efficiency, JVM Cache Locality | [Module_7_DSA.md](Module_7_DSA.md) |
-| 8 | **Design Patterns** | Creational, Structural, Behavioral Patterns, Anti-patterns, Real-world use cases | [Module_8_Design_Patterns.md](Module_8_Design_Patterns.md) |
-| 9 | **Topic Wise Master Q&A** | Java, JVM, Collections, Exceptions, Multithreading, Spring Boot, Microservices | [Interview_QA_Master.md](Interview_QA_Master.md) |
+| 1 | **Language (Core Java)** | Multithreading, JVM Internals, Collections, Functional Programming | [Module_1_language_core_java.md](Module_1_language_core_java.md) |
+| 2 | **Backend Framework (Spring Boot)** | IoC/DI, AOP, Security, REST, Spring MVC | [Module_2_backend_framework_springboot.md](Module_2_backend_framework_springboot.md) |
+| 3 | **DBMS (MySQL, PostgreSQL)** | SQL Optimization, Indexing, Transactions, ACID | [Module_3_dbms_mysql_postgresql.md](Module_3_dbms_mysql_postgresql.md) |
+| 4 | **ORM (JPA, Hibernate)** | Caching, N+1 Problem, Entity Lifecycle, Relationships | [Module_4_ORM_jpa_hibernate.md](Module_4_ORM_jpa_hibernate.md) |
+| 5 | **Frontend Framework (Angular)** | Angular Lifecycle, State Management, Rendering Strategies, Backend Integration | [Module_5_frontend_framework_angular.md](Module_5_frontend_framework_angular.md) |
+| 6 | **Microservices** | Service Discovery, Distributed Tracing, Resilience, API Gateway | [Module_6_Microservices.md](Module_6_Microservices.md) |
+| 7 | **Design Patterns** | Creational, Structural, Behavioral Patterns, Anti-patterns | [Module_7_Design_patterns.md](Module_7_Design_patterns.md) |
+| 8 | **DevOps (Docker, K8s, AWS)** | Containerization, Orchestration, CI/CD, Deployment | [Module_8_DevOps.md](Module_8_DevOps.md) |
+| 9 | **DSA** | Core Algorithms, Complexity Analysis, Custom DS Design | [Module_9_DSA.md](Module_9_DSA.md) |
+
+---
+**Bonus / Extra Resources:**
+- [System Design & Architecture](Bonus_System_Design.md)
+- [Topic Wise Master Q&A](../Master/Interview_QA_Master.md)
 
 ---
 

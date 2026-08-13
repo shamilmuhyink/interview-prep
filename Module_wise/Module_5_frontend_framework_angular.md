@@ -1,4 +1,4 @@
-# Module 4: Frontend Architecture (Angular)
+# Module 5: Frontend Framework (Angular)
 
 > **Scope:** Angular Lifecycle, State Management, Rendering Strategies, Component Architecture, Backend Integration, RxJS
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

@@ -1,4 +1,4 @@
-# Module 5: System Design & Architecture
+# Bonus: System Design & Architecture
 
 > **Scope:** SOLID, Design Patterns, Scalability, Event-Driven Design, CQRS/Event Sourcing, API Design, CAP Theorem
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)

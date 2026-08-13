@@ -1,4 +1,4 @@
-# Module 8: Design Patterns
+# Module 7: Design Patterns
 
 > **Scope:** Creational, Structural, Behavioral Patterns, Anti-patterns, Real-world use cases, Integration with Spring/Java
 > **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
