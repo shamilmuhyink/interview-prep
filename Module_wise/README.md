@@ -1,6 +1,6 @@
 # 🎯 Senior Full Stack Java Developer — Interview Preparation Kit
 
-> **Level:** Senior (5+ years) | **Total Questions:** 140 (7 Modules × 20 Questions)
+> **Level:** Senior (5+ years) | **Total Questions:** 160 (8 Modules × 20 Questions)
 > **Tech Stack:** Java 17+, Spring Boot 3, Microservices, Angular 16+, JPA/Hibernate, PostgreSQL, Docker, Kubernetes, AWS, CI/CD
 > **Coverage:** 🏢 Product-Based (Google, Amazon, Flipkart, Atlassian, Razorpay, PhonePe) & 🏬 Service-Based (TCS, Infosys, Wipro, HCL, Cognizant, Tech Mahindra, LTIMindtree) Companies
 
@@ -17,6 +17,8 @@
 | 5 | **System Design & Architecture** | SOLID, Design Patterns, Scalability, Event-Driven Design, CQRS/Event Sourcing | [Module_5_System_Design.md](Module_5_System_Design.md) |
 | 6 | **DevOps, Cloud & Behavioral** | Containerization, K8s, AWS, CI/CD, Conflict Resolution, Project Ownership | [Module_6_DevOps_Cloud_Behavioral.md](Module_6_DevOps_Cloud_Behavioral.md) |
 | 7 | **Data Structures & Algorithms** | Core Algorithms, Complexity Analysis, Custom DS Design, Memory Efficiency, JVM Cache Locality | [Module_7_DSA.md](Module_7_DSA.md) |
+| 8 | **Design Patterns** | Creational, Structural, Behavioral Patterns, Anti-patterns, Real-world use cases | [Module_8_Design_Patterns.md](Module_8_Design_Patterns.md) |
+| 9 | **Topic Wise Master Q&A** | Java, JVM, Collections, Exceptions, Multithreading, Spring Boot, Microservices | [Interview_QA_Master.md](Interview_QA_Master.md) |
 
 ---
 

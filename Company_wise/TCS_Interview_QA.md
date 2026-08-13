@@ -24,15 +24,14 @@
 
 ### 4. Explain the internal working of `HashMap`. What happens if `hashCode()` only returns a constant?
 **Internal Working:**
-- `HashMap` works on the principle of **Hashing**. It stores data in key-value pairs.
-- It contains an array of `Node` (or `Entry`) objects called "buckets" (default size 16).
-- **Put Operation:** When `put(key, value)` is called, it calculates the hash of the key (`hash(key.hashCode())`) to find the bucket index. If the bucket is empty, it stores the node. If not, it handles the collision by forming a LinkedList (or a Red-Black Tree in Java 8 if the list size exceeds 8).
-- **Get Operation:** Calculates the hash to find the bucket, then uses `equals()` to traverse the list/tree and find the exact key.
+- **Buckets (Array):** `HashMap` stores key-value pairs in an array of `Node` elements called buckets (default size 16).
+- **`put(key, value)`:** It computes the key's hash (`hash(key.hashCode())`) to find the bucket index. If empty, it stores the node. If occupied (collision), it links the new node as a LinkedList (or Red-Black Tree in Java 8+ if the bucket size exceeds 8).
+- **`get(key)`:** It finds the bucket index using the hash, then traverses the list/tree using `equals()` to find the exact key.
 
 **If `hashCode()` returns a constant (e.g., `return 1;`):**
-- **Impact:** Every single key will generate the exact same hash and fall into the **same bucket** (Index 1).
-- **Result:** The `HashMap` degrades completely into a single LinkedList (or Tree). 
-- **Performance:** Time complexity for `get()` and `put()` drops from **O(1)** to **O(n)** (or **O(log n)** for trees), destroying the performance benefits of using a Map.
+- **Impact:** All keys hash to the exact same bucket (e.g., Index 1).
+- **Result:** The `HashMap` degrades into a single LinkedList (or Red-Black Tree).
+- **Performance:** Time complexity drops from **O(1)** (constant time) to **O(N)** (or **O(log N)** for trees) because it has to traverse the entire list/tree using `.equals()` for every operation, ruining performance.
 
 ### 5. `String` vs `StringBuilder` vs `StringBuffer`
 | Feature | `String` | `StringBuilder` | `StringBuffer` |
