@@ -328,3 +328,27 @@ Agile is an iterative approach to software development focused on delivering val
 ### Q62: As a Lead Developer, how do you handle technical disagreements within a Scrum team and mentor junior developers?
 **Answer:**
 I handle disagreements by facilitating open discussions, relying on data and POCs (Proof of Concepts) rather than opinions, and ensuring architectural decisions align with broader business goals. For mentorship, I conduct regular pair programming sessions, use code reviews as a collaborative learning tool, and provide constructive, actionable feedback during sprint retrospectives.
+
+### Q63: Explain the 5 SOLID Principles of Object-Oriented Design.
+**Answer:**
+- **S**ingle Responsibility Principle: A class should have one, and only one, reason to change.
+- **O**pen/Closed Principle: Software entities should be open for extension but closed for modification.
+- **L**iskov Substitution Principle: Objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
+- **I**nterface Segregation Principle: No client should be forced to depend on methods it does not use (create small, specific interfaces).
+- **D**ependency Inversion Principle: High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., using Interfaces).
+
+### Q64: What is the exact difference between `ClassNotFoundException` and `NoClassDefFoundError`?
+**Answer:**
+- **`ClassNotFoundException`**: A checked exception that occurs when an application tries to load a class at runtime using `Class.forName()` or `loadClass()` but the `.class` file is not found in the classpath.
+- **`NoClassDefFoundError`**: An error (unchecked) that occurs when a class was successfully compiled and present during compile-time, but the JVM cannot find it at runtime (e.g., the `.jar` was removed or classpath changed).
+
+### Q65: Which Design Patterns have you commonly implemented in your projects?
+**Answer:**
+- **Singleton Pattern**: Used for creating a single instance of a configuration manager or database connection pool. In Spring, beans are Singleton by default.
+- **Factory Pattern**: Used when we have a superclass with multiple subclasses and want to return one of the subclasses based on input.
+- **Builder Pattern**: Used to construct a complex object step by step, avoiding multiple constructors with many parameters.
+
+### Q66: Explain the difference between pure Hibernate and Spring Data JPA.
+**Answer:**
+- **Hibernate**: It is a JPA implementation (an ORM framework). It provides the actual logic to map Java objects to database tables and handles the underlying JDBC operations.
+- **Spring Data JPA**: It is a higher-level abstraction on top of JPA providers like Hibernate. It eliminates boilerplate code by allowing developers to write repository interfaces, and Spring automatically provides the CRUD implementation at runtime.
