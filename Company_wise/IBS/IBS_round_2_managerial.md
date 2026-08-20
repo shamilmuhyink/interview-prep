@@ -1,6 +1,6 @@
-# IBS Software Services: Full Stack Developer Interview Questions
+# IBS Software Services: Round 2 (Technical & Managerial) Interview Questions
 
-Based on the JD and overall frequency in technical interviews for Senior/Lead Java Full Stack Developers, the following questions are ranked sequentially from most frequently asked fundamental concepts to architectural, DevOps, coding, and behavioral/process topics. 
+This document contains conceptual technical questions covering Core Java, Spring Boot, Databases, Frontend (Angular), Software Architecture, Cloud (AWS), DevOps, Agile Methodologies, and Leadership.
 
 ### Q1: Explain the differences between `String`, `StringBuilder`, and `StringBuffer`. Why is `String` immutable?
 **Answer:**
@@ -196,83 +196,17 @@ Implement a filter (`OncePerRequestFilter`) to intercept requests, extract the J
 4. **Authorization**: For subsequent requests, the client includes the JWT in the `Authorization: Bearer <token>` header.
 5. **Token Verification**: A custom filter intercepts the request, verifies the token's signature/expiration, and if valid, sets the `SecurityContext` to allow access.
 
-### Q38: What are some common software architectural patterns you've implemented?
-**Answer:**
-- **Microservices Architecture**: Breaking down a monolith into small, independently deployable services.
-- **Event-Driven Architecture**: Decoupling services using message queues/topics (like Kafka or RabbitMQ) to react to events asynchronously.
-- **MVC (Model-View-Controller)**: Separating the application's data, user interface, and control logic.
-- **CQRS (Command Query Responsibility Segregation)**: Separating read operations (Queries) and write operations (Commands) into different models for optimization.
-
-### Q39: What are Enterprise Integration Patterns (EIP) and how have you used them?
-**Answer:**
-EIPs are standard solutions for designing and implementing integrations between different enterprise systems. Common patterns include Message Router, Publish-Subscribe Channel, Message Translator, and Scatter-Gather. I have utilized frameworks like Apache Camel or Spring Integration to implement these patterns, decoupling services and effectively routing messages asynchronously via message brokers.
-
-### Q40: What is the API Gateway pattern?
-**Answer:**
-A single entry point for all clients. It routes requests to appropriate microservices, aggregates responses, and handles cross-cutting concerns like authentication, rate limiting, and SSL termination.
-
-### Q41: How do you implement an API Gateway in Spring Cloud and handle routing?
-**Answer:**
-In **Spring Cloud Gateway**, you define routes either in `application.yml` or via Java Config. A route consists of:
-- **ID**: Unique identifier.
-- **URI**: The destination microservice.
-- **Predicates**: Conditions to match the request (e.g., `Path=/api/users/**`).
-- **Filters**: Modify the request/response (e.g., `AddRequestHeader`, `RewritePath`, or custom filters).
-
-### Q42: What is Service Discovery? How does Eureka work?
-**Answer:**
-In a dynamic environment, IP addresses of services change. Services register themselves with a Service Registry (like Netflix Eureka). Clients query Eureka to find the exact IP/port of a required service.
-
-### Q43: Explain the Circuit Breaker pattern.
-**Answer:**
-Prevents a microservice from repeatedly calling a failing service, preventing cascading failures. If a service fails consecutively, the circuit "opens," failing fast. After a timeout, it "half-opens" to test if the service is back. (Implemented using Resilience4j).
-
-### Q44: How do you handle distributed transactions in Microservices?
-**Answer:**
-Standard ACID transactions don't work across multiple databases. 
-Use the **Saga Pattern**: A sequence of local transactions where each updates data within a single service and publishes an event to trigger the next transaction. If one fails, compensating transactions are triggered to undo changes.
-
-### Q45: What is the difference between Kafka and RabbitMQ?
-**Answer:**
-- **RabbitMQ**: Traditional message broker (Smart Broker, Dumb Consumer). Excellent for complex routing and task queues. Messages are deleted after consumption.
-- **Kafka**: Distributed streaming platform (Dumb Broker, Smart Consumer). Excellent for high-throughput, event-driven architectures. Messages are persisted and can be replayed.
-
-### Q46: Explain the use cases for AWS Lambda, S3, and managed Kubernetes (EKS) in a Microservices architecture.
-**Answer:**
-- **AWS Lambda**: Serverless compute used for event-driven, short-lived tasks (e.g., triggering a data processing script when a file is uploaded, or running a lightweight cron job).
-- **Amazon S3**: Highly durable object storage used for storing static frontend assets, application backups, or acting as a data lake for raw analytics data.
-- **Amazon EKS (Kubernetes)**: A managed container orchestration service used to deploy, scale, and automatically manage our dockerized Spring Boot microservices across clusters.
-
-### Q47: What is Docker? How do you containerize a Spring Boot app?
-**Answer:**
-Docker packages an application and its dependencies into a standardized unit (container). 
-Create a `Dockerfile`: Define a base image (e.g., `openjdk:17`), copy the `.jar` file into the image, and define the `ENTRYPOINT` (`java -jar app.jar`).
-
-### Q48: How do you build a runnable JAR file using Maven?
-**Answer:**
-You can use `mvn clean install` or `mvn clean package`. In a Spring Boot application, the `spring-boot-maven-plugin` repacks the standard JAR into an executable, "fat" JAR containing all necessary dependencies and an embedded web server (like Tomcat). It can be run using `java -jar application.jar`.
-
-### Q49: Explain CI/CD pipelines.
-**Answer:**
-- **Continuous Integration (CI)**: Automatically building and testing code every time a developer commits changes (e.g., via Jenkins, GitHub Actions).
-- **Continuous Deployment (CD)**: Automatically deploying the validated code to staging or production environments.
-
-### Q50: What is the difference between `git merge` and `git rebase`?
-**Answer:**
-- **`git merge`**: Combines two branches and creates a new "merge commit". It preserves the exact history but can result in a messy, non-linear commit graph.
-- **`git rebase`**: Takes the commits from the current branch and reapplies them sequentially on top of another branch. It rewrites project history to create a clean, linear progression without extra merge commits.
-
-### Q51: What is the difference between SQL and NoSQL databases, and when would you choose NoSQL?
+### Q38: What is the difference between SQL and NoSQL databases, and when would you choose NoSQL?
 **Answer:**
 - **SQL**: Relational, uses predefined schemas, and is vertically scalable. Best for complex, ACID-compliant transactions (e.g., financial systems).
 - **NoSQL**: Non-relational, schema-less (Document, Key-Value, Graph), and horizontally scalable. 
 - **When to choose NoSQL**: I choose NoSQL (like MongoDB or DynamoDB) when handling unstructured data, requiring high-velocity data ingestion, or needing a highly scalable, distributed storage system without complex multi-table JOINs.
 
-### Q52: What is the purpose of Database Indexing?
+### Q39: What is the purpose of Database Indexing?
 **Answer:**
 Indexes are data structures (usually B-Trees) that improve the speed of data retrieval operations on a database table at the cost of additional storage space and slower writes (INSERT/UPDATE/DELETE).
 
-### Q53: Write a SQL query using JOIN, GROUP BY, and HAVING to find departments with more than 5 employees.
+### Q40: Write a SQL query using JOIN, GROUP BY, and HAVING to find departments with more than 5 employees.
 **Answer:**
 ```sql
 SELECT d.department_name, COUNT(e.emp_id) as total_employees
@@ -282,7 +216,7 @@ GROUP BY d.department_name
 HAVING COUNT(e.emp_id) > 5;
 ```
 
-### Q54: Explain Component Lifecycle Hooks in Angular.
+### Q41: Explain Component Lifecycle Hooks in Angular.
 **Answer:**
 - `ngOnChanges()`: Called when an input binding value changes.
 - `ngOnInit()`: Component initialization.
@@ -290,317 +224,99 @@ HAVING COUNT(e.emp_id) > 5;
 - `ngAfterViewInit()`: After Angular initializes the views.
 - `ngOnDestroy()`: Cleanup (unsubscribing observables).
 
-### Q55: How do you handle form validation in Angular and Spring Boot?
+### Q42: How do you handle form validation in Angular and Spring Boot?
 **Answer:**
 - **Angular**: Use Reactive Forms, define logic in the component class, and apply `Validators` (e.g., `Validators.required`).
 - **Spring Boot**: Use Validation API (`@Valid`, `@NotNull`) on DTOs, catch `MethodArgumentNotValidException` via `@ControllerAdvice`.
 
-### Q56: What is the difference between Directives and Components in Angular?
+### Q43: What is the difference between Directives and Components in Angular?
 **Answer:**
 A Component is a directive with a template (HTML). Directives (like `*ngIf`, `*ngFor` or custom attributes) add behavior to an existing DOM element without their own template.
 
-### Q57: Explain the difference between Observables and Promises.
+### Q44: Explain the difference between Observables and Promises.
 **Answer:**
 - **Promises**: Handle a single asynchronous event. Eager execution, cannot be cancelled.
 - **Observables**: Handle a stream of events over time. Lazy execution, can be cancelled (unsubscribed), and support operators (map, filter).
 
-### Q58: What is RxJS? Name a few commonly used RxJS operators.
+### Q45: What is RxJS? Name a few commonly used RxJS operators.
 **Answer:**
 RxJS is a library for reactive programming using Observables. Commonly used operators include `map` (transform data), `filter` (filter data), `mergeMap` / `switchMap` (flattening inner observables).
 
-### Q59: How does Routing work in Angular? Explain Route Guards.
+### Q46: How does Routing work in Angular? Explain Route Guards.
 **Answer:**
 Routing enables navigation between views. Route Guards (like `CanActivate`, `CanDeactivate`) act as interceptors to allow or deny navigation based on conditions (e.g., checking if a user is logged in).
 
-### Q60: What are Angular Interceptors?
+### Q47: What are Angular Interceptors?
 **Answer:**
 Classes that implement `HttpInterceptor`. They intercept outgoing HTTP requests (to add tokens/headers) and incoming HTTP responses (to handle global errors).
 
-### Q61: How do you find the maximum and minimum numbers in a list using Java 8 Streams?
+### Q48: What are some common software architectural patterns you've implemented?
 **Answer:**
-```java
-public void findMinMax(List<Integer> list) {
-    int max = list.stream().max(Integer::compare).orElseThrow();
-    int min = list.stream().min(Integer::compare).orElseThrow();
-    System.out.println("Max: " + max + ", Min: " + min);
-}
-```
+- **Microservices Architecture**: Breaking down a monolith into small, independently deployable services.
+- **Event-Driven Architecture**: Decoupling services using message queues/topics (like Kafka or RabbitMQ) to react to events asynchronously.
+- **MVC (Model-View-Controller)**: Separating the application's data, user interface, and control logic.
+- **CQRS (Command Query Responsibility Segregation)**: Separating read operations (Queries) and write operations (Commands) into different models for optimization.
 
-### Q62: How do you count the occurrences of each character in a String using Streams?
+### Q49: What are Enterprise Integration Patterns (EIP) and how have you used them?
 **Answer:**
-```java
-public Map<String, Long> countCharacters(String str) {
-    return Arrays.stream(str.split(""))
-                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-}
-```
+EIPs are standard solutions for designing and implementing integrations between different enterprise systems. Common patterns include Message Router, Publish-Subscribe Channel, Message Translator, and Scatter-Gather. I have utilized frameworks like Apache Camel or Spring Integration to implement these patterns, decoupling services and effectively routing messages asynchronously via message brokers.
 
-### Q63: How do you count the occurrences of each word in a String using Streams?
+### Q50: What is the API Gateway pattern?
 **Answer:**
-```java
-public Map<String, Long> countWords(String str) {
-    return Arrays.stream(str.split("\\s+"))
-                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-}
-```
+A single entry point for all clients. It routes requests to appropriate microservices, aggregates responses, and handles cross-cutting concerns like authentication, rate limiting, and SSL termination.
 
-### Q64: How do you find duplicate elements in a List using Streams?
+### Q51: How do you implement an API Gateway in Spring Cloud and handle routing?
 **Answer:**
-```java
-public Set<Integer> findDuplicates(List<Integer> list) {
-    Set<Integer> items = new HashSet<>();
-    return list.stream()
-               .filter(n -> !items.add(n)) // Set.add() returns false if the element was already present
-               .collect(Collectors.toSet());
-}
-```
+In **Spring Cloud Gateway**, you define routes either in `application.yml` or via Java Config. A route consists of:
+- **ID**: Unique identifier.
+- **URI**: The destination microservice.
+- **Predicates**: Conditions to match the request (e.g., `Path=/api/users/**`).
+- **Filters**: Modify the request/response (e.g., `AddRequestHeader`, `RewritePath`, or custom filters).
 
-### Q65: How do you group a list of objects (e.g. Employees) by a property (e.g. Department) using Streams?
+### Q52: What is Service Discovery? How does Eureka work?
 **Answer:**
-```java
-public Map<String, List<Employee>> groupEmployeesByDepartment(List<Employee> employees) {
-    return employees.stream()
-                    .collect(Collectors.groupingBy(Employee::getDepartment));
-}
-```
+In a dynamic environment, IP addresses of services change. Services register themselves with a Service Registry (like Netflix Eureka). Clients query Eureka to find the exact IP/port of a required service.
 
-### Q66: How do you find the employee with the highest salary using Streams?
+### Q53: Explain the Circuit Breaker pattern.
 **Answer:**
-```java
-public Employee findHighestPaidEmployee(List<Employee> employees) {
-    return employees.stream()
-                    .max(Comparator.comparingDouble(Employee::getSalary))
-                    .orElseThrow(() -> new RuntimeException("No employees found"));
-}
-```
+Prevents a microservice from repeatedly calling a failing service, preventing cascading failures. If a service fails consecutively, the circuit "opens," failing fast. After a timeout, it "half-opens" to test if the service is back. (Implemented using Resilience4j).
 
-### Q67: How do you sort a list of employees by age and then by salary using Streams?
+### Q54: How do you handle distributed transactions in Microservices?
 **Answer:**
-```java
-public List<Employee> sortEmployeesByAgeAndSalary(List<Employee> employees) {
-    return employees.stream()
-                    .sorted(Comparator.comparingInt(Employee::getAge)
-                                      .thenComparingDouble(Employee::getSalary))
-                    .collect(Collectors.toList());
-}
-```
+Standard ACID transactions don't work across multiple databases. 
+Use the **Saga Pattern**: A sequence of local transactions where each updates data within a single service and publishes an event to trigger the next transaction. If one fails, compensating transactions are triggered to undo changes.
 
-### Q68: Write a program to print a pyramid pattern of stars.
+### Q55: What is the difference between Kafka and RabbitMQ?
 **Answer:**
-```java
-public void printPyramid(int rows) {
-    for (int i = 1; i <= rows; i++) {
-        for (int j = rows - i; j > 0; j--) System.out.print(" ");
-        for (int k = 1; k <= (2 * i - 1); k++) System.out.print("*");
-        System.out.println();
-    }
-}
-```
+- **RabbitMQ**: Traditional message broker (Smart Broker, Dumb Consumer). Excellent for complex routing and task queues. Messages are deleted after consumption.
+- **Kafka**: Distributed streaming platform (Dumb Broker, Smart Consumer). Excellent for high-throughput, event-driven architectures. Messages are persisted and can be replayed.
 
-### Q69: How do you rotate a square matrix by 90 degrees in-place?
+### Q56: Explain the use cases for AWS Lambda, S3, and managed Kubernetes (EKS) in a Microservices architecture.
 **Answer:**
-To rotate an N x N matrix by 90 degrees clockwise in-place, you first transpose the matrix (swap `matrix[i][j]` with `matrix[j][i]`), and then reverse each row.
-```java
-public void rotateMatrix(int[][] matrix) {
-    int n = matrix.length;
-    // Step 1: Transpose the matrix
-    for (int i = 0; i < n; i++) {
-        for (int j = i; j < n; j++) {
-            int temp = matrix[i][j];
-            matrix[i][j] = matrix[j][i];
-            matrix[j][i] = temp;
-        }
-    }
-    // Step 2: Reverse each row
-    for (int i = 0; i < n; i++) {
-        int left = 0, right = n - 1;
-        while (left < right) {
-            int temp = matrix[i][left];
-            matrix[i][left] = matrix[i][right];
-            matrix[i][right] = temp;
-            left++;
-            right--;
-        }
-    }
-}
-```
+- **AWS Lambda**: Serverless compute used for event-driven, short-lived tasks (e.g., triggering a data processing script when a file is uploaded, or running a lightweight cron job).
+- **Amazon S3**: Highly durable object storage used for storing static frontend assets, application backups, or acting as a data lake for raw analytics data.
+- **Amazon EKS (Kubernetes)**: A managed container orchestration service used to deploy, scale, and automatically manage our dockerized Spring Boot microservices across clusters.
 
-### Q70: How do you print a 2D matrix in a spiral order?
+### Q57: What is Docker? How do you containerize a Spring Boot app?
 **Answer:**
-You maintain four boundaries (`top`, `bottom`, `left`, `right`) and iterate through the matrix, adjusting the boundaries as you complete each row/column.
-```java
-public List<Integer> spiralOrder(int[][] matrix) {
-    List<Integer> result = new ArrayList<>();
-    if (matrix == null || matrix.length == 0) return result;
-    
-    int top = 0, bottom = matrix.length - 1;
-    int left = 0, right = matrix[0].length - 1;
-    
-    while (top <= bottom && left <= right) {
-        // Traverse top row
-        for (int i = left; i <= right; i++) result.add(matrix[top][i]);
-        top++;
-        
-        // Traverse right column
-        for (int i = top; i <= bottom; i++) result.add(matrix[i][right]);
-        right--;
-        
-        if (top <= bottom) {
-            // Traverse bottom row
-            for (int i = right; i >= left; i--) result.add(matrix[bottom][i]);
-            bottom--;
-        }
-        
-        if (left <= right) {
-            // Traverse left column
-            for (int i = bottom; i >= top; i--) result.add(matrix[i][left]);
-            left++;
-        }
-    }
-    return result;
-}
-```
+Docker packages an application and its dependencies into a standardized unit (container). 
+Create a `Dockerfile`: Define a base image (e.g., `openjdk:17`), copy the `.jar` file into the image, and define the `ENTRYPOINT` (`java -jar app.jar`).
 
-### Q71: Write a program to swap two numbers without using a third/temporary variable.
+### Q58: How do you build a runnable JAR file using Maven?
 **Answer:**
-```java
-public void swap(int a, int b) {
-    a = a + b;
-    b = a - b;
-    a = a - b;
-}
-```
+You can use `mvn clean install` or `mvn clean package`. In a Spring Boot application, the `spring-boot-maven-plugin` repacks the standard JAR into an executable, "fat" JAR containing all necessary dependencies and an embedded web server (like Tomcat). It can be run using `java -jar application.jar`.
 
-### Q72: How do you remove duplicate elements from an Array?
+### Q59: Explain CI/CD pipelines.
 **Answer:**
-Using a HashSet (O(N) time complexity):
-```java
-public Integer[] removeDuplicates(int[] arr) {
-    Set<Integer> set = new LinkedHashSet<>();
-    for(int num : arr) set.add(num);
-    return set.toArray(new Integer[0]);
-}
-```
+- **Continuous Integration (CI)**: Automatically building and testing code every time a developer commits changes (e.g., via Jenkins, GitHub Actions).
+- **Continuous Deployment (CD)**: Automatically deploying the validated code to staging or production environments.
 
-### Q73: Write a logic to check if a String is a Palindrome.
+### Q60: What is the difference between `git merge` and `git rebase`?
 **Answer:**
-```java
-public boolean isPalindrome(String str) {
-    int left = 0, right = str.length() - 1;
-    while(left < right) {
-        if(str.charAt(left++) != str.charAt(right--)) return false;
-    }
-    return true;
-}
-```
+- **`git merge`**: Combines two branches and creates a new "merge commit". It preserves the exact history but can result in a messy, non-linear commit graph.
+- **`git rebase`**: Takes the commits from the current branch and reapplies them sequentially on top of another branch. It rewrites project history to create a clean, linear progression without extra merge commits.
 
-### Q74: How do you find the second highest number in an array?
-**Answer:**
-```java
-public int secondHighest(int[] arr) {
-    int highest = Integer.MIN_VALUE, secondHighest = Integer.MIN_VALUE;
-    for(int num : arr) {
-        if(num > highest) {
-            secondHighest = highest;
-            highest = num;
-        } else if (num > secondHighest && num != highest) {
-            secondHighest = num;
-        }
-    }
-    return secondHighest;
-}
-```
-
-### Q75: Check if two strings are Anagrams.
-**Answer:**
-An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once. There are two common approaches to solve this:
-
-**Method 1: Using Sorting (Time: O(N log N), Space: O(N))**
-Convert both strings to character arrays, sort them, and check if they are equal.
-```java
-public boolean isAnagramSort(String str1, String str2) {
-    if (str1.length() != str2.length()) return false;
-    char[] a1 = str1.toCharArray();
-    char[] a2 = str2.toCharArray();
-    Arrays.sort(a1);
-    Arrays.sort(a2);
-    return Arrays.equals(a1, a2);
-}
-```
-
-**Method 2: Using Frequency Array (Time: O(N), Space: O(1))**
-A more optimized approach is to use an integer array to count the frequencies of characters, assuming standard ASCII characters (like lowercase English letters).
-```java
-public boolean isAnagramOptimized(String str1, String str2) {
-    if (str1.length() != str2.length()) return false;
-    int[] counts = new int[26];
-    for (int i = 0; i < str1.length(); i++) {
-        counts[str1.charAt(i) - 'a']++;
-        counts[str2.charAt(i) - 'a']--;
-    }
-    for (int count : counts) {
-        if (count != 0) return false;
-    }
-    return true;
-}
-```
-
-### Q76: Write a program to reverse a String without using built-in methods.
-**Answer:**
-```java
-public String reverse(String str) {
-    char[] chars = str.toCharArray();
-    String reversed = "";
-    for(int i = chars.length - 1; i >= 0; i--) reversed += chars[i];
-    return reversed;
-}
-```
-
-### Q77: Find the first non-repeating character in a String.
-**Answer:**
-Use a `LinkedHashMap<Character, Integer>` to store the character counts while maintaining insertion order, then iterate and return the first char with count 1.
-```java
-public Character firstNonRepeatingChar(String str) {
-    Map<Character, Integer> counts = new LinkedHashMap<>();
-    for (char c : str.toCharArray()) {
-        counts.put(c, counts.getOrDefault(c, 0) + 1);
-    }
-    for (Map.Entry<Character, Integer> entry : counts.entrySet()) {
-        if (entry.getValue() == 1) {
-            return entry.getKey();
-        }
-    }
-    return null;
-}
-```
-
-### Q78: How to find if a Linked List has a cycle?
-**Answer:**
-Use Floyd’s Cycle-Finding Algorithm (Tortoise and Hare). Move a `slow` pointer by 1 step and a `fast` pointer by 2 steps. If they meet, there is a cycle.
-```java
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; next = null; }
-}
-
-public boolean hasCycle(ListNode head) {
-    if (head == null || head.next == null) return false;
-    ListNode slow = head;
-    ListNode fast = head;
-    
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (slow == fast) {
-            return true;
-        }
-    }
-    return false;
-}
-```
-
-### Q79: Explain Agile Methodology and its standard ceremonies.
+### Q61: Explain Agile Methodology and its standard ceremonies.
 **Answer:**
 Agile is an iterative approach to software development focused on delivering value quickly in small increments. Scrum is a popular framework involving:
 - **Sprint**: A fixed timebox (e.g., 2 weeks) to complete work.
@@ -609,6 +325,6 @@ Agile is an iterative approach to software development focused on delivering val
 - **Sprint Review**: Demoing completed work to stakeholders.
 - **Sprint Retrospective**: Reflecting on what went well and what can be improved.
 
-### Q80: As a Lead Developer, how do you handle technical disagreements within a Scrum team and mentor junior developers?
+### Q62: As a Lead Developer, how do you handle technical disagreements within a Scrum team and mentor junior developers?
 **Answer:**
 I handle disagreements by facilitating open discussions, relying on data and POCs (Proof of Concepts) rather than opinions, and ensuring architectural decisions align with broader business goals. For mentorship, I conduct regular pair programming sessions, use code reviews as a collaborative learning tool, and provide constructive, actionable feedback during sprint retrospectives.
