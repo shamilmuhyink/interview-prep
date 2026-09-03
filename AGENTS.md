@@ -52,7 +52,7 @@ All questions in this repository belong to one of **10 modules**. When adding, m
 
 ## 3. Company-Wise Files
 
-There are **7 companies** tracked. Each has its own subdirectory under `Company_wise/`.
+There are **8 companies** tracked. Each has its own subdirectory under `Company_wise/`.
 
 | Company | Directory | Files | Notes |
 |---------|-----------|-------|-------|
@@ -63,6 +63,7 @@ There are **7 companies** tracked. Each has its own subdirectory under `Company_
 | **Tekion** | `Company_wise/Tekion/` | `tekion_java_staff_backend_questions.md` | Staff-level. Heavy on System Design and concurrency. |
 | **Synechron** | `Company_wise/Synechron/` | `technical_round.md` (20 Qs), `managerial_round.md` (4 Qs), `hr_round.md` (4 Qs) | Focuses on deep Java, Concurrency, and Microservices Resiliency. Split by round type. |
 | **Infosys** | `Company_wise/Infosys/` | `infosys_interview_questions.md` (50 Qs) | Service-based focus. Full Stack Java topics. |
+| **BT Group** | `Company_wise/BT/` | `bt_interview_questions.md` (30 Qs) | Telecom focused. Networking, Java, Systems. |
 
 ---
 
@@ -89,15 +90,15 @@ When editing or adding questions to any `Company_wise/` file:
 
 ### 4.3 Cross-Company Frequency Tiers (For Master Files)
 
-When updating `Master/Interview_QA_Master.md` or creating consolidated views, rank topics by how many of the 7 companies ask them:
+When updating `Master/Interview_QA_Master.md` or creating consolidated views, rank topics by how many of the 8 companies ask them:
 
 | Tier | Symbol | Companies Asking | Action |
 |------|--------|-----------------|--------|
-| Universal | 🔴⚡ | 7/7 companies | Must appear in top section of any master file |
-| Very High | 🟠 | 5-6/7 companies | Must appear in second section |
-| High | 🟡 | 3-4/7 companies | Third section |
-| Medium | 🟢 | 2/7 companies | Fourth section |
-| Specific | 🔵 | 1/7 companies | Bottom section or company-specific only |
+| Universal | 🔴⚡ | 8/8 companies | Must appear in top section of any master file |
+| Very High | 🟠 | 6-7/8 companies | Must appear in second section |
+| High | 🟡 | 4-5/8 companies | Third section |
+| Medium | 🟢 | 2-3/8 companies | Fourth section |
+| Specific | 🔵 | 1/8 companies | Bottom section or company-specific only |
 
 ---
 
@@ -105,16 +106,16 @@ When updating `Master/Interview_QA_Master.md` or creating consolidated views, ra
 
 Use this table as the **source of truth** when deciding question priority, ordering, or which questions to add/remove. Topics are listed in descending frequency order.
 
-### 5.1 Universal (7/7 Companies) — Never Remove These
+### 5.1 Universal (8/8 Companies) — Never Remove These
 
-| Topic | Module | TCS | Deloitte | Experion | IBS | Tekion | Synechron | Infosys |
-|-------|--------|-----|----------|---------|-----|--------|-----------|---------|
-| HashMap internals (put/get, treeification) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| HashMap vs ConcurrentHashMap (thread safety) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| OOP Concepts (4 pillars with examples) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Java 8 Streams API (filter, map, collect) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Microservices vs Monolithic architecture | `MICROSERVICES` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SOLID Principles | `SYSTEM_DESIGN` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Topic | Module | TCS | Deloitte | Experion | IBS | Tekion | Synechron | Infosys | BT |
+|-------|--------|-----|----------|---------|-----|--------|-----------|---------|----|
+| HashMap internals (put/get, treeification) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| HashMap vs ConcurrentHashMap (thread safety) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| OOP Concepts (4 pillars with examples) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Java 8 Streams API (filter, map, collect) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Microservices vs Monolithic architecture | `MICROSERVICES` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SOLID Principles | `SYSTEM_DESIGN` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ### 5.2 Very High (4/5 Companies)
 
