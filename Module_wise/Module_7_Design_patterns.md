@@ -252,3 +252,10 @@ System.out.println(coffee.getDescription() + " $" + coffee.getCost());
 ---
 
 > 💡 **Pro Tip:** In modern Java (especially Spring Boot applications), many structural and creational patterns are handled by the framework (Dependency Injection abstracts away Factories, AOP handles Proxies). Be prepared to discuss how frameworks implement these patterns behind the scenes!
+
+---
+
+### Q21. 🟢 🏢 How can the Singleton pattern be broken in Java, and how do you prevent it?
+- **Reflection**: Can invoke private constructors. *Prevention*: Throw exception in constructor if instance exists, or use `enum`.
+- **Serialization**: Deserialization creates a new instance. *Prevention*: Implement `readResolve()` returning the existing instance.
+- **Cloning**: *Prevention*: Override `clone()` to throw `CloneNotSupportedException`.

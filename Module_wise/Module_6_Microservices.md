@@ -1117,3 +1117,9 @@ spring:
 - **Don't use profiles for feature flags** — profiles are for environment-specific config. Use a feature flag system (LaunchDarkly, Spring Cloud Config).
 - **`@Profile("!prod")`** — negation works but is hard to reason about. Prefer explicit profiles.
 - **Default profile** — if no profile is active, Spring uses `default`. Use this for development.
+
+---
+
+### Q21. 🟢 🏢 Explain the architecture of Kafka and how it ensures high availability.
+- **Architecture**: Consists of Brokers, Topics, Partitions, and ZooKeeper (or KRaft). Data is split into Partitions across multiple brokers.
+- **High Availability**: Achieved through Replication. Each partition has a Leader and Followers. Producers write to the Leader, which replicates to Followers. If the Leader fails, a synchronized Follower is elected as the new Leader, ensuring zero data loss.

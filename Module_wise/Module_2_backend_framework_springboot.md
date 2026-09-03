@@ -1148,3 +1148,9 @@ spring:
 - **Authorization (What are you allowed to do?)**:
   - The process determines if the authenticated user has permission to access a specific resource.
   - **Flow**: After successful authentication, when a user requests a protected resource, Spring Security's `FilterSecurityInterceptor` (or method security interceptor for `@PreAuthorize`) intercepts the request. It relies on the `AccessDecisionManager` (which delegates to `AccessDecisionVoter`s) to evaluate the current `Authentication` object's granted authorities (roles/permissions) against the required authorities for the requested endpoint or method. If authorized, the request proceeds; otherwise, a `403 Forbidden` is returned.
+
+---
+
+### Q24. 🟢 🏢 What is `BeanCurrentlyInCreationException` and how do you resolve circular dependencies?
+- Occurs when Bean A needs Bean B, and Bean B needs Bean A in their constructors.
+- **Resolution**: Redesign to extract common logic to Bean C, use `@Lazy` on one of the constructor parameters (injects a proxy), or use setter/field injection instead of constructor injection.

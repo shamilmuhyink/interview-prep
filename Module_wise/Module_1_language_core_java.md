@@ -828,3 +828,15 @@ Comparator<Employee> nullSafe = Comparator.nullsLast(
 
 - While `map()` transforms each element into a single new value, `flatMap()` transforms each element into a stream of zero or more values, and then flattens all those generated streams into a single, continuous stream.
 - **Use case**: If you have a `List<List<String>>` and you want a single `List<String>` containing all the inner strings, you would use `flatMap(List::stream)`. It's used to deal with nested structures and one-to-many relationships in data processing.
+
+---
+
+### Q36. 🟢 🏢 How do you identify, diagnose, and resolve a memory leak or deadlock in a Java application?
+- **Memory Leak**: Use tools like JConsole or Grafana. A classic sign is Old Generation growing continuously. Capture a heap dump (`jmap`) and analyze in Eclipse MAT to trace GC Roots.
+- **Deadlock**: If the app hangs, take a Thread Dump (`jstack`). The JVM will explicitly print "Found one Java-level deadlock". Prevent by locking in a consistent order or using `tryLock(timeout)`.
+
+---
+
+### Q37. 🟢 🏢 Explain the purpose of `default` and `static` methods in Java 8 Interfaces.
+- **`default`**: Allow adding new methods to interfaces without breaking existing implementing classes (backward compatibility).
+- **`static`**: Belong to the interface itself, used for utility methods specific to the interface (e.g., `Stream.of()`).
