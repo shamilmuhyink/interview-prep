@@ -214,7 +214,8 @@ Use this table as the **source of truth** when deciding question priority, order
    - Structured explanation using bullet points.
    - 📊 **Use tables** when comparing concepts (e.g., HashMap vs ConcurrentHashMap).
    - 🖼️ **Present visually like diagrams** wherever possible (e.g., flowcharts, memory model).
-   - 💻 Production-quality code snippet (where applicable).
+   - 💻 **Production-quality code snippet** (where applicable).
+   - ⚡ **For coding/DSA questions:** Provide the most optimized solution code along with Time and Space complexity explanations.
    ```
 6. If adding to a `Company_wise/` file, maintain the **frequency-based order** (most asked first), not topic grouping.
 
