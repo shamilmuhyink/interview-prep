@@ -208,12 +208,13 @@ Use this table as the **source of truth** when deciding question priority, order
 2. **Check** the cross-company frequency table (Section 5) to determine which tier it belongs to.
 3. **Place** the question in the correct tier position within the module file (🔴 → 🟡 → 🟢).
 4. **Tag** the question with the company coverage icon: 🌐 Both | 🏢 Product | 🏬 Service.
-5. **Follow the answer format**:
-   ```
-   1. 🎯 One-sentence definitive summary
-   2. 📖 Structured explanation (concept → mechanics → trade-offs)
-   3. 💻 Production-quality code snippet (where applicable)
-   4. ⚠️ Edge cases & common pitfalls
+5. **Follow the answer format** (patterned after `Company_wise/deloitte/technical_round.md`):
+   ```markdown
+   **Answer:**
+   - Structured explanation using bullet points.
+   - 📊 **Use tables** when comparing concepts (e.g., HashMap vs ConcurrentHashMap).
+   - 🖼️ **Present visually like diagrams** wherever possible (e.g., flowcharts, memory model).
+   - 💻 Production-quality code snippet (where applicable).
    ```
 6. If adding to a `Company_wise/` file, maintain the **frequency-based order** (most asked first), not topic grouping.
 
@@ -254,7 +255,7 @@ Use this table as the **source of truth** when deciding question priority, order
 ## 🔴 CRITICAL / MUST-KNOW (Top 5)
 
 ### Q1. 🔴 [🌐|🏢|🏬] [Question text]
-[Answer following the 4-part format]
+[Answer following the Deloitte format with tables and diagrams]
 
 ---
 
@@ -307,7 +308,7 @@ Before finalizing changes to any file in this repository, verify:
 - [ ] Question is classified into exactly one module (Section 2)
 - [ ] Question is placed in the correct frequency tier (Section 4)
 - [ ] Cross-company frequency table (Section 5) is still accurate after the change
-- [ ] Answer follows the 4-part format (summary → explanation → code → pitfalls)
+- [ ] Answer follows the structured format (bullet points → tables/diagrams → code snippet)
 - [ ] Code examples compile with the tech stack versions in Section 8
 - [ ] Existing comments, pitfalls, and cross-references are preserved
 - [ ] Company files maintain frequency-based ordering (not topic-based)
