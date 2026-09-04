@@ -1,7 +1,7 @@
 # Module 6: Microservices
 
 > **Scope:** IoC/DI, AOP, Security, Service Discovery, Distributed Tracing, Resilience, REST API Design
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 22 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -1123,3 +1123,11 @@ spring:
 ### Q21. 🟢 🏢 Explain the architecture of Kafka and how it ensures high availability.
 - **Architecture**: Consists of Brokers, Topics, Partitions, and ZooKeeper (or KRaft). Data is split into Partitions across multiple brokers.
 - **High Availability**: Achieved through Replication. Each partition has a Leader and Followers. Producers write to the Leader, which replicates to Followers. If the Leader fails, a synchronized Follower is elected as the new Leader, ensuring zero data loss.
+
+---
+
+### Q22. 🟠 🏢 How do you handle IoT device data ingestion at scale in Java? (MQTT Integration)
+**Answer:**
+- **Protocol:** IoT devices typically use lightweight protocols like MQTT rather than HTTP.
+- **Integration:** Use Spring Integration MQTT or Eclipse Paho to subscribe to broker topics.
+- **Processing:** Ingested payloads are validated, transformed, and often published to Kafka for durable, high-throughput asynchronous processing by downstream microservices.

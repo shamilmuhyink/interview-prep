@@ -840,3 +840,59 @@ Comparator<Employee> nullSafe = Comparator.nullsLast(
 ### Q37. 🟢 🏢 Explain the purpose of `default` and `static` methods in Java 8 Interfaces.
 - **`default`**: Allow adding new methods to interfaces without breaking existing implementing classes (backward compatibility).
 - **`static`**: Belong to the interface itself, used for utility methods specific to the interface (e.g., `Stream.of()`).
+
+---
+
+### Q38. 🟢 🌐 Explain the Java Thread Lifecycle and its various states.
+
+**While Java officially groups "ready" and "running" into a single `RUNNABLE` state in the `Thread.State` enum, interviewers often look for the conceptual split between `RUNNABLE` (ready) and `RUNNING` (actively executing). Here is the complete lifecycle flow.**
+
+**1. The Happy Path (Normal Execution):**
+- **`NEW`:** A `Thread` object is created (`new Thread()`), but `start()` has not been called. The OS thread does not exist yet.
+- **`RUNNABLE` (Ready to Run):** You call `t.start()`. The thread is handed to the JVM/OS Thread Scheduler and is waiting in the queue for its turn on the CPU.
+- **`RUNNING`:** The Thread Scheduler allocates CPU time to the thread. The thread is now actively executing its `run()` method. (Note: The JVM still reports this as `RUNNABLE`).
+  - *Yielding:* A `RUNNING` thread can move back to `RUNNABLE` if it calls `Thread.yield()` or if the Thread Scheduler preempts it (time-slicing).
+- **`TERMINATED`:** The thread completes its `run()` method or throws an unhandled exception. It dies and cannot be restarted.
+
+**2. The Detours (Pauses and Blocking):**
+A `RUNNING` thread might need to pause, moving it out of the active CPU into a waiting state:
+
+- **`TIMED_WAITING` (Fixed-time pause):** 
+  - *Trigger:* `Thread.sleep(ms)`, `wait(ms)`, `join(ms)`.
+  - *Behavior:* Pauses for a set time. `sleep()` **does NOT release monitor locks**.
+  - *Exit:* Time expires. Moves back to `RUNNABLE` (queue).
+
+- **`WAITING` (Indefinite wait):**
+  - *Trigger:* `wait()`, `join()`.
+  - *Behavior:* Suspends indefinitely. `wait()` **releases the monitor lock** so other threads can enter.
+  - *Exit (The difference between `notify` and `notifyAll`):*
+    - **`notify()`:** Wakes up a *single, randomly chosen* thread waiting on that object's monitor. It's more efficient but risky if threads are waiting for different conditions (can cause a "missed signal" deadlock).
+    - **`notifyAll()`:** Wakes up *all* threads waiting on that monitor. They all wake up, but only one can acquire the lock (the rest go to `BLOCKED`). Generally safer and the recommended default.
+
+- **`BLOCKED` (Lock contention):**
+  - *Trigger:* Attempting to enter a `synchronized` block held by another thread.
+  - *Behavior:* Halts execution without consuming CPU.
+  - *Exit:* The lock becomes available and is granted to this thread. Moves back to `RUNNABLE` (queue).
+
+**State Transition Diagram:**
+
+```mermaid
+stateDiagram-v2
+    [*] --> NEW : new Thread()
+    NEW --> RUNNABLE : start()
+    
+    RUNNABLE --> RUNNING : Thread Scheduler allocates CPU
+    RUNNING --> RUNNABLE : Thread.yield() / Time-slice expires
+    
+    RUNNING --> BLOCKED : enter synchronized (lock held by other)
+    BLOCKED --> RUNNABLE : lock acquired
+    
+    RUNNING --> WAITING : wait(), join()
+    WAITING --> RUNNABLE : notify(), notifyAll()
+    
+    RUNNING --> TIMED_WAITING : sleep(ms), wait(ms)
+    TIMED_WAITING --> RUNNABLE : timeout, notify()
+    
+    RUNNING --> TERMINATED : run() completes
+    TERMINATED --> [*]
+```

@@ -8,7 +8,19 @@
 
 **Act as a mentor for software engineering professionals.** When working on this repository:
 
-1. **Curate & Fetch** — Fetch interview questions from platforms like AmbitionBox, Glassdoor, Reddit, PrepInsta, GeeksforGeeks, LinkedIn, and Quora etc. Filter them for quality, accuracy, and relevance to the target role (Senior Full Stack Java Developer, 5+ years).
+1. **Curate & Fetch** — Fetch interview questions from platforms like AmbitionBox, Glassdoor, Reddit, PrepInsta, GeeksforGeeks, LinkedIn, and Quora etc. Try to fetch ALL related questions that belong to the target skill set (see below), not just a few. Filter them for quality, accuracy, and relevance to the target role (Senior Full Stack Java Developer, 5+ years), and rank them properly.
+
+### Target Candidate Profile
+
+The user is seeking **Full Stack positions** majorly focused on Java, Spring Boot, Hibernate, Angular, MySQL/PostgreSQL, AWS, Docker, and Kubernetes.
+
+**Technical Skills:**
+- **Programming Languages:** Java, Python, SQL, JavaScript, TypeScript
+- **Backend & Frameworks:** Spring Boot, Spring Security, JWT, RBAC, Hibernate, Spring Data JPA, FastAPI, RESTful API Design, Microservices Architecture
+- **Frontend:** Angular, RxJS, HTML5, CSS3, Responsive Web Design, Bootstrap
+- **Databases:** MySQL, PostgreSQL, MS SQL, MongoDB
+- **Cloud & DevOps:** AWS (EC2, S3, RDS, API Gateway), Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI)
+- **Tools & AI-assisted Development:** Git, Postman, Swagger/OpenAPI, IntelliJ IDEA, VS Code, AI-Assisted Dev (GitHub Copilot, Cursor)
 2. **Classify** — Determine which module (Section 2) each question belongs to and place it in the correct file.
 3. **Rank** — Assign a frequency tier (🔴 → 🟡 → 🟢) based on the cross-company frequency table (Section 5). Place the question at the correct position within the file.
 4. **Sync to Module-Wise** — Whenever a question is added to a `Company_wise/` file, check if it already exists in the corresponding `Module_wise/` file. **If it does not exist there, add it.** Module-wise files are the canonical reference — every question must have a home there.
@@ -33,7 +45,7 @@ Java-interview-prep/
 
 ## 2. Module Taxonomy
 
-All questions in this repository belong to one of **10 modules**. When adding, moving, or tagging a question, you **must** classify it into exactly one of these modules.
+All questions in this repository belong to one of **11 modules**. When adding, moving, or tagging a question, you **must** classify it into exactly one of these modules.
 
 | # | Module ID | Module Name | Key Topics | File |
 |---|-----------|-------------|-----------|------|
@@ -47,12 +59,13 @@ All questions in this repository belong to one of **10 modules**. When adding, m
 | 8 | `DEVOPS` | DevOps (Docker, K8s, AWS) | Containerization, Orchestration, CI/CD, Deployment | `Module_wise/Module_8_DevOps.md` |
 | 9 | `DSA` | Data Structures & Algorithms | Core Algorithms, Complexity Analysis, Custom DS Design | `Module_wise/Module_9_DSA.md` |
 | 10 | `SYSTEM_DESIGN` | System Design & Architecture (Bonus) | SOLID, Scalability, CQRS, Event Sourcing, CAP Theorem | `Module_wise/Bonus_System_Design.md` |
+| 11 | `SCENARIO_BASED` | Scenario-Based Questions (Bonus 2) | Troubleshooting, Bottlenecks, Architecture Trade-offs | `Module_wise/Bonus_2_Scenario_Based.md` |
 
 ---
 
 ## 3. Company-Wise Files
 
-There are **8 companies** tracked. Each has its own subdirectory under `Company_wise/`.
+There are **9 companies** tracked. Each has its own subdirectory under `Company_wise/`.
 
 | Company | Directory | Files | Notes |
 |---------|-----------|-------|-------|
@@ -61,9 +74,10 @@ There are **8 companies** tracked. Each has its own subdirectory under `Company_
 | **Experion** | `Company_wise/Experion/` | `experion_interview.md` (50 Qs) | Q&A format (Interviewer/Candidate). Includes a JD PDF. |
 | **IBS** | `Company_wise/IBS/` | `IBS_round_1_dsa.md` (30 Qs), `IBS_round_2_managerial.md` (66 Qs) | Split by round. R1 is pure coding/DSA. |
 | **Tekion** | `Company_wise/Tekion/` | `tekion_java_staff_backend_questions.md` | Staff-level. Heavy on System Design and concurrency. |
-| **Synechron** | `Company_wise/Synechron/` | `technical_round.md` (20 Qs), `managerial_round.md` (4 Qs), `hr_round.md` (4 Qs) | Focuses on deep Java, Concurrency, and Microservices Resiliency. Split by round type. |
+| **Synechron** | `Company_wise/Synechron/` | `technical_round.md` (35 Qs), `managerial_round.md` (4 Qs), `hr_round.md` (4 Qs) | Focuses on deep Java, Concurrency, and Microservices Resiliency. Split by round type. |
 | **Infosys** | `Company_wise/Infosys/` | `infosys_interview_questions.md` (50 Qs) | Service-based focus. Full Stack Java topics. |
 | **BT Group** | `Company_wise/BT/` | `bt_interview_questions.md` (30 Qs) | Telecom focused. Networking, Java, Systems. |
+| **Gadgeon** | `Company_wise/Gadgeon/` | `gadgeon_interview_questions.md` (15 Qs) | IoT, Spring Boot, Microservices focus. |
 
 ---
 
@@ -90,15 +104,15 @@ When editing or adding questions to any `Company_wise/` file:
 
 ### 4.3 Cross-Company Frequency Tiers (For Master Files)
 
-When updating `Master/Interview_QA_Master.md` or creating consolidated views, rank topics by how many of the 8 companies ask them:
+When updating `Master/Interview_QA_Master.md` or creating consolidated views, rank topics by how many of the 9 companies ask them:
 
 | Tier | Symbol | Companies Asking | Action |
 |------|--------|-----------------|--------|
-| Universal | 🔴⚡ | 8/8 companies | Must appear in top section of any master file |
-| Very High | 🟠 | 6-7/8 companies | Must appear in second section |
-| High | 🟡 | 4-5/8 companies | Third section |
-| Medium | 🟢 | 2-3/8 companies | Fourth section |
-| Specific | 🔵 | 1/8 companies | Bottom section or company-specific only |
+| Universal | 🔴⚡ | 8-9/9 companies | Must appear in top section of any master file |
+| Very High | 🟠 | 6-7/9 companies | Must appear in second section |
+| High | 🟡 | 4-5/9 companies | Third section |
+| Medium | 🟢 | 2-3/9 companies | Fourth section |
+| Specific | 🔵 | 1/9 companies | Bottom section or company-specific only |
 
 ---
 
@@ -106,18 +120,18 @@ When updating `Master/Interview_QA_Master.md` or creating consolidated views, ra
 
 Use this table as the **source of truth** when deciding question priority, ordering, or which questions to add/remove. Topics are listed in descending frequency order.
 
-### 5.1 Universal (8/8 Companies) — Never Remove These
+### 5.1 Universal (8-9/9 Companies) — Never Remove These
 
-| Topic | Module | TCS | Deloitte | Experion | IBS | Tekion | Synechron | Infosys | BT |
-|-------|--------|-----|----------|---------|-----|--------|-----------|---------|----|
-| HashMap internals (put/get, treeification) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| HashMap vs ConcurrentHashMap (thread safety) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| OOP Concepts (4 pillars with examples) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Java 8 Streams API (filter, map, collect) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Microservices vs Monolithic architecture | `MICROSERVICES` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SOLID Principles | `SYSTEM_DESIGN` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Topic | Module | TCS | Deloitte | Experion | IBS | Tekion | Synechron | Infosys | BT | Gadgeon |
+|-------|--------|-----|----------|---------|-----|--------|-----------|---------|----|---------|
+| HashMap internals (put/get, treeification) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| HashMap vs ConcurrentHashMap (thread safety) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| OOP Concepts (4 pillars with examples) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Java 8 Streams API (filter, map, collect) | `CORE_JAVA` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Microservices vs Monolithic architecture | `MICROSERVICES` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SOLID Principles | `SYSTEM_DESIGN` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
 
-### 5.2 Very High (4/5 Companies)
+### 5.2 Very High (6-7/9 Companies)
 
 | Topic | Module | Companies |
 |-------|--------|-----------|
@@ -127,71 +141,71 @@ Use this table as the **source of truth** when deciding question priority, order
 | Spring Boot Auto-configuration internals | `SPRING_BOOT` | TCS, Deloitte, IBS, Tekion |
 | ACID properties + Transaction Isolation | `DBMS` | TCS, Deloitte, Experion, IBS |
 | SQL Joins (INNER, LEFT, RIGHT, FULL) | `DBMS` | TCS, Deloitte, Experion, IBS |
-| JWT/OAuth2 auth flow in Spring Security | `SPRING_BOOT` | TCS, Deloitte, Experion, IBS |
+| JWT/OAuth2 auth flow in Spring Security | `SPRING_BOOT` | TCS, Deloitte, Experion, IBS, Synechron |
 | Circuit Breaker (Resilience4j) | `MICROSERVICES` | TCS, Deloitte, IBS, Tekion |
 | Docker (Image vs Container, Dockerfile) | `DEVOPS` | TCS, Deloitte, Experion, IBS |
-| CI/CD pipeline concepts | `DEVOPS` | TCS, Deloitte, Experion, IBS |
+| CI/CD pipeline concepts | `DEVOPS` | TCS, Deloitte, Experion, IBS, Synechron |
 | Runnable vs Callable | `CORE_JAVA` | TCS, Deloitte, Experion, IBS |
 | Exception Handling (Checked vs Unchecked) | `CORE_JAVA` | TCS, Deloitte, Experion, IBS |
 | Two Sum problem | `DSA` | TCS, Deloitte, Experion, IBS |
 | Singleton Pattern (thread-safe) | `DESIGN_PATTERNS` | TCS, Deloitte, Experion, IBS |
 | API Gateway pattern | `MICROSERVICES` | TCS, Deloitte, Experion, IBS |
-| AWS Services (S3, EC2, RDS) | `DEVOPS` | TCS, Deloitte, Experion, IBS |
+| AWS Services (S3, EC2, RDS) | `DEVOPS` | TCS, Deloitte, Experion, IBS, Synechron |
 | Palindrome check (String) | `DSA` | TCS, Deloitte, Experion, IBS |
 | Character/Word frequency counting | `DSA` | TCS, Deloitte, Experion, IBS |
 | Factory + Builder patterns | `DESIGN_PATTERNS` | TCS, Deloitte, Experion, IBS |
-| Database Indexing (B-Tree, covering) | `DBMS` | TCS, Deloitte, IBS, Tekion |
+| Database Indexing (B-Tree, covering) | `DBMS` | TCS, Deloitte, IBS, Tekion, Synechron |
 | Global Exception Handling (`@ControllerAdvice`) | `SPRING_BOOT` | TCS, Deloitte, Experion, IBS |
 
-### 5.3 High (3/5 Companies)
+### 5.3 High (4-5/9 Companies)
 
 | Topic | Module | Companies |
 |-------|--------|-----------|
 | `@Transactional` propagation & isolation | `ORM` | TCS, Deloitte, IBS |
 | `map()` vs `flatMap()` in Streams | `CORE_JAVA` | TCS, Deloitte, IBS |
-| `volatile` vs `synchronized` | `CORE_JAVA` | TCS, IBS, Tekion |
+| `volatile` vs `synchronized` | `CORE_JAVA` | TCS, IBS, Tekion, Synechron |
 | ArrayList vs LinkedList | `CORE_JAVA` | TCS, Experion, IBS |
 | Spring Bean Lifecycle | `SPRING_BOOT` | TCS, Deloitte, IBS |
 | Service Discovery (Eureka, K8s DNS) | `MICROSERVICES` | TCS, IBS, Tekion |
-| Saga Pattern (distributed transactions) | `MICROSERVICES` | TCS, IBS, Tekion |
+| Saga Pattern (distributed transactions) | `MICROSERVICES` | TCS, IBS, Tekion, Synechron |
 | N+1 Query Problem (Hibernate) | `ORM` | TCS, Deloitte, Experion |
 | Reverse a Linked List | `DSA` | TCS, Deloitte, Experion |
 | Detect cycle in Linked List (Floyd's) | `DSA` | TCS, Deloitte, IBS |
-| Kubernetes basics (Pod, Service) | `DEVOPS` | TCS, Deloitte, Experion |
+| Kubernetes basics (Pod, Service) | `DEVOPS` | TCS, Deloitte, Experion, Synechron |
 | Angular Lifecycle Hooks | `ANGULAR` | TCS, Deloitte, IBS |
 | Comparable vs Comparator | `CORE_JAVA` | TCS, IBS, Deloitte |
 | Normalization (1NF–3NF) | `DBMS` | Deloitte, Experion, IBS |
 | GROUP BY / HAVING | `DBMS` | TCS, Deloitte, IBS |
 | `@RestController` vs `@Controller` | `SPRING_BOOT` | TCS, Deloitte, IBS |
 | Functional Interfaces + Lambda | `CORE_JAVA` | TCS, Deloitte, IBS |
-| Spring Boot Actuator | `SPRING_BOOT` | TCS, Deloitte, Experion |
+| Spring Boot Actuator | `SPRING_BOOT` | TCS, Deloitte, Experion, Synechron |
 | Angular Routing + Lazy Loading | `ANGULAR` | Deloitte, Experion, IBS |
 | Observable vs Promise (RxJS) | `ANGULAR` | Experion, IBS, Deloitte |
 | `@Component` vs `@Service` vs `@Repository` | `SPRING_BOOT` | TCS, Deloitte, IBS |
 | Agile Scrum methodology | Process | TCS, Deloitte, Experion |
 
-### 5.4 Medium (2/5 Companies)
+### 5.4 Medium (2-3/9 Companies)
 
 | Topic | Companies |
 |-------|-----------|
-| CompletableFuture patterns | TCS, Tekion |
-| Virtual Threads (Java 21) | Experion, Tekion |
+| CompletableFuture patterns | TCS, Tekion, Synechron |
+| Virtual Threads (Java 21) | Experion, Tekion, Synechron |
 | FetchType.LAZY vs EAGER | TCS, Deloitte |
 | Optimistic vs Pessimistic Locking | Experion, Tekion |
 | Spring WebFlux vs MVC | TCS, Tekion |
 | CQRS / Event Sourcing | TCS, IBS |
 | SQL vs NoSQL selection | IBS, Tekion |
-| Kafka Architecture (topics, partitions) | TCS, Tekion |
-| Redis Caching strategies | Deloitte, Tekion |
-| `wait()` vs `sleep()` | TCS, IBS |
+| Kafka Architecture (topics, partitions) | TCS, Tekion, Synechron |
+| Redis Caching strategies | Deloitte, Tekion, Synechron |
+| `wait()` vs `sleep()` | TCS, IBS, Synechron |
 | Second highest element in array | Experion, IBS |
 | Anagram check/grouping | Deloitte, IBS |
 | git merge vs git rebase | Experion, IBS |
 | Window Functions (ROW_NUMBER, RANK) | TCS, Deloitte |
 | Query Optimization (EXPLAIN) | Deloitte, Tekion |
-| Docker Compose | Experion, IBS |
+| Docker Compose | Experion, IBS, Synechron |
 | Spring Profiles | Experion, IBS |
-| Angular Interceptors | Experion, IBS |
+| Angular Interceptors | Experion, IBS, Synechron |
 | `throw` vs `throws` | TCS, IBS |
 | Serialization / `transient` | TCS, IBS |
 | CAP Theorem | Experion, IBS |
@@ -234,7 +248,7 @@ Use this table as the **source of truth** when deciding question priority, order
 
 ### 6.4 Reorganizing or Restructuring
 
-- The `Module_wise/` directory must maintain exactly **10 files** (9 modules + 1 bonus).
+- The `Module_wise/` directory must maintain exactly **11 files** (9 modules + 2 bonus).
 - Each module file header must include: Scope, Question count, Critical count, Coverage tags, and sort order note.
 - Company files must remain in their respective subdirectory. Do not merge company files across companies.
 - The `Master/Interview_QA_Master.md` must remain a **flat, topic-grouped** master document.
@@ -318,4 +332,4 @@ Before finalizing changes to any file in this repository, verify:
 ---
 
 > *This instruction file governs all AI-assisted modifications to the `Java-interview-prep` repository.*
-> *Last updated: September 2026 | 5 company datasets | 10 modules | 400+ questions tracked*
+> *Last updated: September 2026 | 9 company datasets | 11 modules | 430+ questions tracked*
