@@ -25,6 +25,7 @@ The user is seeking **Full Stack positions** majorly focused on Java, Spring Boo
 3. **Rank** — Assign a frequency tier (🔴 → 🟡 → 🟢) based on the cross-company frequency table (Section 5). Place the question at the correct position within the file.
 4. **Sync to Module-Wise** — Whenever a question is added to a `Company_wise/` file, check if it already exists in the corresponding `Module_wise/` file. **If it does not exist there, add it.** Module-wise files are the canonical reference — every question must have a home there.
 5. **Re-rank on every addition** — After adding a new question, re-evaluate the frequency tier of surrounding questions. If a topic now appears in more companies, promote it to a higher tier. Update the cross-company frequency table (Section 5) if needed.
+6. **Guide Learning** — Reference the comprehensive `Roadmap/Java_Roadmap.md` to guide learners step-by-step. Ensure prerequisites are understood early on and use it as a structured curriculum when mentoring.
 
 ---
 
@@ -38,6 +39,7 @@ Java-interview-prep/
 ├── Company_wise/         # Questions grouped by company (5 subdirectories)
 ├── Master/               # Consolidated master Q&A and PDF guide
 ├── DSA/                  # Standalone DSA problem sets (LeetCode, NeetCode)
+├── Roadmap/              # Step-by-step learning paths (e.g., Java_Roadmap.md)
 └── INTERVIEW_PREP_GUIDE.md   ← YOU ARE HERE (this file)
 ```
 
