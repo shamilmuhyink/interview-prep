@@ -883,3 +883,31 @@ public class BitmaskSubsets {
     }
 }
 ```
+
+---
+
+### Q21. 🟢 🌐 String Manipulation: How do you reverse a string without using built-in functions?
+
+**Answer:**
+```java
+public class StringReversal {
+    public static String reverse(String input) {
+        if (input == null || input.isEmpty()) return input;
+        
+        char[] characters = input.toCharArray();
+        int left = 0;
+        int right = characters.length - 1;
+        
+        while (left < right) {
+            // Swap characters
+            char temp = characters[left];
+            characters[left] = characters[right];
+            characters[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(characters);
+    }
+}
+```
+**Time Complexity:** O(n) | **Space Complexity:** O(n) (due to char array)

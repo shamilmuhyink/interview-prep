@@ -1154,3 +1154,22 @@ spring:
 ### Q24. 🟢 🏢 What is `BeanCurrentlyInCreationException` and how do you resolve circular dependencies?
 - Occurs when Bean A needs Bean B, and Bean B needs Bean A in their constructors.
 - **Resolution**: Redesign to extract common logic to Bean C, use `@Lazy` on one of the constructor parameters (injects a proxy), or use setter/field injection instead of constructor injection.
+
+---
+
+### Q25. 🟢 🌐 Explain REST API constraints. How is it different from SOAP?
+**Answer:**
+- **REST (Representational State Transfer)** is an architectural style based on HTTP, utilizing standard methods (GET, POST, PUT, DELETE).
+- **Constraints of REST:**
+  1. Client-Server Architecture (Decoupled).
+  2. Stateless (No client context stored on server between requests).
+  3. Cacheability (Responses must define themselves as cacheable or not).
+  4. Layered System (Client cannot tell if it's connected to end server or intermediary).
+  5. Uniform Interface (Resource identification in requests, HATEOAS).
+
+| Feature | REST | SOAP (Web Services) |
+| --- | --- | --- |
+| Protocol | Uses HTTP mostly | Uses WSDL, XML over HTTP/SMTP |
+| Data Format | JSON, XML, HTML, plain text | XML only |
+| Security | HTTPS, OAuth2, JWT | WS-Security, SSL |
+| State | Stateless | Can be stateful |

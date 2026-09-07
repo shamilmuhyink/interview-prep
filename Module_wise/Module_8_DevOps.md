@@ -1037,3 +1037,12 @@ export default function () {
 4. **ADRs (Architecture Decision Records)** — document WHY shortcuts were taken so future teams understand context.
 
 > **In interviews, emphasize:** "I believe tech debt is a business decision, not a technical one. I communicate the business impact — 'This legacy service adds 2 days to every feature that touches payments' — to get buy-in for investment."
+
+---
+
+### Q21. 🌐 Kubernetes (Infrastructure): What are Pods, Deployments, and Services?
+
+**Answer:**
+- **Pod:** The smallest deployable computing unit in K8s. Represents a single instance of a running process, usually wrapping one (or occasionally tightly-coupled multiple) containers.
+- **Deployment:** A higher-level abstraction that manages ReplicaSets. It provides declarative updates (rolling updates, rollbacks) to Pods and ensures the desired number of Pods are always running.
+- **Service:** An abstraction that defines a logical set of Pods and a policy by which to access them (ClusterIP, NodePort, LoadBalancer). It provides a stable IP address and DNS name, acting as a load balancer for the underlying Pods.

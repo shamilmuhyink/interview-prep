@@ -67,7 +67,7 @@ All questions in this repository belong to one of **11 modules**. When adding, m
 
 ## 3. Company-Wise Files
 
-There are **9 companies** tracked. Each has its own subdirectory under `Company_wise/`.
+There are **10 companies** tracked. Each has its own subdirectory under `Company_wise/`.
 
 | Company | Directory | Files | Notes |
 |---------|-----------|-------|-------|
@@ -80,6 +80,7 @@ There are **9 companies** tracked. Each has its own subdirectory under `Company_
 | **Infosys** | `Company_wise/Infosys/` | `infosys_interview_questions.md` (50 Qs) | Service-based focus. Full Stack Java topics. |
 | **BT Group** | `Company_wise/BT/` | `bt_interview_questions.md` (30 Qs) | Telecom focused. Networking, Java, Systems. |
 | **Gadgeon** | `Company_wise/Gadgeon/` | `gadgeon_interview_questions.md` (15 Qs) | IoT, Spring Boot, Microservices focus. |
+| **EPAM** | `Company_wise/EPAM/` | `technical_round.md` (18 Qs), `managerial_round.md` (6 Qs), `hr_round.md` (7 Qs) | Split by round type. Full Stack Java topics, heavily focused on internal mechanics and microservices. |
 
 ---
 
@@ -334,4 +335,4 @@ Before finalizing changes to any file in this repository, verify:
 ---
 
 > *This instruction file governs all AI-assisted modifications to the `Java-interview-prep` repository.*
-> *Last updated: September 2026 | 9 company datasets | 11 modules | 430+ questions tracked*
+> *Last updated: September 2026 | 10 company datasets | 11 modules | 449+ questions tracked*

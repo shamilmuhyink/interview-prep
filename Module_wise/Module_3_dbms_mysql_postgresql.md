@@ -894,3 +894,29 @@ Product managed = entityManager.merge(detached); // Returns managed copy
 - `persist()` with an existing ID throws `EntityExistsException` or causes duplicate key violation.
 - `merge()` on a new entity (no ID) triggers an INSERT — but the returned instance is the managed one, not the original.
 - Spring Data JPA's `save()` calls `persist()` if `isNew()` returns true, otherwise `merge()` — `isNew()` checks if the ID is null.
+
+---
+
+### Q21. 🟢 🌐 Oracle PL/SQL: Explain the difference between Implicit and Explicit Cursors. What are Triggers?
+
+**Answer:**
+- **Cursors** are used to retrieve and process data row by row in PL/SQL.
+  - **Implicit Cursors:** Automatically created by Oracle for DML statements (`INSERT`, `UPDATE`, `DELETE`) and single-row `SELECT INTO`. Attributes like `SQL%ROWCOUNT`, `SQL%FOUND` are used to check status.
+  - **Explicit Cursors:** Declared and managed by the programmer for queries returning multiple rows. Steps: `DECLARE`, `OPEN`, `FETCH`, `CLOSE`.
+- **Triggers:** Named PL/SQL blocks executed automatically in response to specific events on a table or view (e.g., `BEFORE INSERT`, `AFTER UPDATE`). Used heavily for auditing or enforcing complex business rules.
+
+```sql
+-- Explicit Cursor Example
+DECLARE
+  CURSOR emp_cur IS SELECT first_name FROM employees WHERE department_id = 10;
+  v_name employees.first_name%TYPE;
+BEGIN
+  OPEN emp_cur;
+  LOOP
+    FETCH emp_cur INTO v_name;
+    EXIT WHEN emp_cur%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE(v_name);
+  END LOOP;
+  CLOSE emp_cur;
+END;
+```
