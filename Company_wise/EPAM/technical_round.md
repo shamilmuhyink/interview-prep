@@ -1,5 +1,6 @@
 # EPAM Technical Round Questions
 
+> **Interview Format Note:** The **First Round (L1)** is typically a high-paced technical screening focusing heavily on **live coding (DSA/Programming)** and **rapid-fire conceptual questions** across the core stack. Candidates are expected to write code and answer quick-fire theory questions back-to-back.
 > **Skill Set:** Java, Hibernate, Data Structures, Programming, Spring Boot, Oracle PL/SQL, Microservices, REST API, Docker, Kubernetes, Infrastructure, Oracle Web Services
 > **Sources:** AmbitionBox, Glassdoor, GeeksforGeeks, LeetCode
 > **Note:** Questions are ranked strictly by interview frequency (descending) based on aggregated data.
@@ -320,3 +321,69 @@ public class InventoryService {
     }
 }
 ```
+
+---
+
+### 19. 🌐 DSA / Programming: How do you merge two sorted arrays into a single sorted array in-place?
+**Answer:**
+- **Problem:** Given two sorted integer arrays `nums1` and `nums2`, merge `nums2` into `nums1` as one sorted array. Assume that `nums1` has a size equal to $m + n$ such that it has enough space to hold additional elements from `nums2`.
+- **Optimized Solution:** Start from the end of both arrays and place the larger element at the end of `nums1`. This avoids shifting elements and uses $O(1)$ extra space.
+
+```java
+public class MergeSortedArrays {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1; // Last element in nums1's initial valid part
+        int j = n - 1; // Last element in nums2
+        int k = m + n - 1; // Last position in nums1
+
+        // Iterate backwards and place the largest element at the end
+        while (j >= 0) {
+            if (i >= 0 && nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            k--;
+        }
+    }
+}
+```
+**Time Complexity:** O(m + n) | **Space Complexity:** O(1)
+
+---
+
+### 20. 🌐 DSA / Programming: Write an optimized program to determine if a string of parentheses is valid.
+**Answer:**
+- **Problem:** Given a string containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid (brackets must be closed in the correct order).
+- **Optimized Solution:** Use a Stack (or an ArrayDeque for better performance) to keep track of opening brackets and match them with incoming closing brackets.
+
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class ValidParentheses {
+    public boolean isValid(String s) {
+        // ArrayDeque is faster than Stack in Java since it doesn't synchronize methods
+        Deque<Character> stack = new ArrayDeque<>();
+        
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) return false;
+                char top = stack.pop();
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        // If stack is empty, all open brackets were properly closed
+        return stack.isEmpty();
+    }
+}
+```
+**Time Complexity:** O(n) | **Space Complexity:** O(n)
