@@ -11,10 +11,10 @@
 
 ### 1. Explain the four pillars of Object-Oriented Programming (OOP) with real-world examples.
 **Answer:**
-- **Encapsulation:** Wrapping data and methods into a single unit (class). Example: A bank account where balance is hidden and accessed only through deposit/withdraw methods.
-- **Abstraction:** Hiding internal implementation details and showing only functionality. Example: Driving a car — you use steering and pedals without knowing engine internals.
-- **Inheritance:** One class acquires the properties and behaviors of another. Example: `Vehicle` → `Car`, `Bike`.
-- **Polymorphism:** A single function/object takes multiple forms. Achieved via method overloading (compile-time) and overriding (run-time).
+- **Encapsulation:** The bundling of data with the methods that operate on that data, or the restricting of direct access to some of an object's components. Example: A bank account where balance is hidden and accessed only through deposit/withdraw methods.
+- **Abstraction:** The process of hiding the complex implementation details and showing only the essential features of the object. Example: Driving a car — you use steering and pedals without knowing engine internals.
+- **Inheritance:** A mechanism wherein a new class is derived from an existing class, allowing it to inherit fields and methods, promoting code reuse. Example: `Vehicle` → `Car`, `Bike`.
+- **Polymorphism:** The ability of an object to take on many forms; it allows objects of different types to be treated as objects of a common super type. Achieved via method overloading (compile-time) and overriding (run-time).
 
 ---
 
@@ -199,8 +199,8 @@ System.out.println(add.operate(5, 3));      // 8
 
 ### 13. What is Dependency Injection (DI) and Inversion of Control (IoC)? Why is Constructor Injection preferred?
 **Answer:**
-- **IoC:** The framework (Spring container) manages object creation, not the programmer.
-- **DI:** Dependencies are injected at runtime by the container.
+- **Inversion of Control (IoC):** A design principle in which custom-written portions of a computer program receive the flow of control from a generic framework, rather than the programmer controlling the flow.
+- **Dependency Injection (DI):** A specific implementation of IoC where an object receives other objects that it depends on (dependencies) from an external container at runtime, rather than creating them internally.
 
 **Why Constructor Injection is preferred:**
 - Dependencies are `final` and immutable — set once, never changed.
@@ -243,6 +243,9 @@ All are `@Component` specializations, auto-detected by `@ComponentScan`.
 
 ### 15. What are Microservices? How are they different from Monolithic architecture?
 **Answer:**
+- **Microservices Architecture:** An architectural style that structures an application as a collection of loosely coupled, independently deployable services organized around specific business capabilities.
+- **Monolithic Architecture:** A traditional unified model for the design of a software program, where all components are interconnected and interdependent within a single application and codebase.
+
 | Feature           | Monolithic                     | Microservices                     |
 | ----------------- | ------------------------------ | --------------------------------- |
 | Deployment        | Single deployable unit         | Independent deployable services   |
@@ -310,7 +313,7 @@ public class SecurityConfig {
 
 ### 18. Explain Hibernate ORM. Write code for a One-to-Many relationship.
 **Answer:**
-Hibernate maps Java objects to database tables, eliminating manual JDBC code.
+**Hibernate ORM** is an object-relational mapping tool that provides a framework for mapping an object-oriented domain model to a relational database, eliminating the need for manual JDBC code.
 ```java
 @Entity
 public class Department {
@@ -473,6 +476,8 @@ export class UserComponent implements OnInit, OnDestroy {
 
 ### 24. What is Angular Data Binding? Explain the types.
 **Answer:**
+**Data Binding** is a mechanism in Angular that coordinates the synchronization of data between the component's TypeScript code (model) and its HTML template (view).
+
 | Type                  | Syntax                   | Direction            |
 | --------------------- | ------------------------ | -------------------- |
 | Interpolation         | `{{ expression }}`       | Component → View     |
@@ -507,7 +512,7 @@ const routes: Routes = [
 
 ### 26. What are Angular Services and how does Dependency Injection work in Angular?
 **Answer:**
-Services are `@Injectable()` classes that encapsulate reusable business logic.
+**Angular Services** are broadly defined as any value, function, or feature that an application needs. They are typically `@Injectable()` classes that encapsulate reusable business logic, distinct from components, to increase modularity and reusability.
 ```typescript
 @Injectable({ providedIn: 'root' }) // Singleton — available app-wide
 export class UserService {
@@ -618,7 +623,7 @@ WHERE e.salary > m.salary;
 
 ### 31. What are Indexes in PostgreSQL? When should you NOT use them?
 **Answer:**
-An index (typically B-Tree) speeds up `SELECT` queries by creating a sorted lookup structure.
+**Index:** A database object containing a copy of selected columns of data from a table that is designed to accelerate data retrieval operations (like `SELECT` queries) by creating a sorted lookup structure, typically a B-Tree, at the cost of additional writes and storage space.
 
 **Types in PostgreSQL:**
 - **B-Tree (default):** For equality and range queries (`=`, `<`, `>`, `BETWEEN`).
@@ -650,12 +655,12 @@ EXPLAIN ANALYZE SELECT * FROM employees WHERE email = 'john@test.com';
 
 ### 32. Explain Normalization and Denormalization. When to use each?
 **Answer:**
-**Normalization** — reduces redundancy, improves data integrity:
+**Normalization:** The process of organizing data in a database to reduce data redundancy and improve data integrity by dividing large tables into smaller, related ones.
 - **1NF:** Atomic values, no repeating groups.
 - **2NF:** No partial dependency on composite primary key.
 - **3NF:** No transitive dependency.
 
-**Denormalization** — adds redundancy for read performance:
+**Denormalization:** A database optimization technique in which redundant data is added to one or more tables to avoid costly joins and improve read performance.
 - Use in read-heavy systems, reporting databases, or caching layers.
 - Example: Storing `department_name` directly in the `employees` table instead of joining every time.
 

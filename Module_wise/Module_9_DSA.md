@@ -1,7 +1,7 @@
 # Module 9: DSA
 
 > **Scope:** Core Algorithms, Complexity Analysis, Custom DS Design, Memory Efficiency, JVM Cache Locality
-> **Questions:** 22 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 24 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -979,3 +979,61 @@ public class ValidParentheses {
 }
 ```
 **Time Complexity:** O(n) | **Space Complexity:** O(n)
+
+---
+
+### Q23. 🟢 🏢 How do you group anagrams from an array of strings?
+
+**Answer:**
+- **Problem:** Given an array of strings, group the anagrams together.
+- **Optimized Solution:** Use a HashMap where the key is the sorted version of the string (or character count array) and the value is a list of anagrams.
+
+```java
+import java.util.*;
+
+public class GroupAnagrams {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs == null || strs.length == 0) return new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        
+        for (String s : strs) {
+            char[] ca = s.toCharArray();
+            Arrays.sort(ca);
+            String key = String.valueOf(ca);
+            
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(s);
+        }
+        return new ArrayList<>(map.values());
+    }
+}
+```
+**Time Complexity:** O(N * K log K) where N is strings count and K is max length. | **Space Complexity:** O(N * K)
+
+---
+
+### Q24. 🟢 🏢 How do you find the Longest Substring Without Repeating Characters?
+
+**Answer:**
+- **Problem:** Given a string `s`, find the length of the longest substring without repeating characters.
+- **Optimized Solution:** Use the Sliding Window technique with a HashSet or an integer array (for ASCII) to track character occurrences.
+
+```java
+public class LongestSubstring {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length(), ans = 0;
+        int[] index = new int[128]; // Current index of character
+        
+        // Try to extend the range [i, j]
+        for (int j = 0, i = 0; j < n; j++) {
+            i = Math.max(index[s.charAt(j)], i);
+            ans = Math.max(ans, j - i + 1);
+            index[s.charAt(j)] = j + 1;
+        }
+        return ans;
+    }
+}
+```
+**Time Complexity:** O(N) | **Space Complexity:** O(1) (fixed size array)

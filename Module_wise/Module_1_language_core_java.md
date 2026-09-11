@@ -1,7 +1,7 @@
 # Module 1: Language (Core Java)
 
 > **Scope:** Multithreading, JVM Internals, Collections Framework, Functional Programming, Memory Model
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 24 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -896,3 +896,90 @@ stateDiagram-v2
     RUNNING --> TERMINATED : run() completes
     TERMINATED --> [*]
 ```
+
+---
+
+### Q21. 🟢 🏢 Explain the Collections framework. What is the difference between `==` and `.equals()`?
+**Answer:**
+- **Collections:** A framework that provides an architecture to store and manipulate a group of objects. Key interfaces include `List`, `Set`, and `Map`.
+- **Difference:**
+  - `==` is an operator that compares object references (memory addresses) to check if they point to the exact same object.
+  - `.equals()` is a method (overridden from `Object` class) used to compare the actual content or state of two objects.
+
+| Feature | `==` Operator | `.equals()` Method |
+| --- | --- | --- |
+| **Type** | Operator | Method |
+| **Comparison** | Reference/Memory Address | Object Value/State |
+| **Overridable** | No | Yes |
+
+---
+
+### Q22. 🟢 🏢 Write a program to print Even and Odd numbers using two threads.
+
+**Answer:**
+- **Mechanism:** Use standard `wait()` and `notify()` on a shared lock object to alternate execution between threads.
+
+```java
+public class EvenOddPrinter {
+    private int counter = 1;
+    private final int MAX = 10;
+    private final Object lock = new Object();
+
+    public void printOdd() {
+        synchronized (lock) {
+            while (counter <= MAX) {
+                if (counter % 2 == 0) {
+                    try { lock.wait(); } catch (InterruptedException e) {}
+                } else {
+                    System.out.println("Odd: " + counter++);
+                    lock.notify();
+                }
+            }
+        }
+    }
+
+    public void printEven() {
+        synchronized (lock) {
+            while (counter <= MAX) {
+                if (counter % 2 != 0) {
+                    try { lock.wait(); } catch (InterruptedException e) {}
+                } else {
+                    System.out.println("Even: " + counter++);
+                    lock.notify();
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+### Q23. 🟢 🏢 How do you count the frequency of characters in a string using Java 8 Streams?
+
+**Answer:**
+- A common rapid-fire question to test Streams API fluency.
+
+```java
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class FrequencyCount {
+    public static void main(String[] args) {
+        String input = "epam systems";
+        Map<Character, Long> frequency = input.chars()
+            .mapToObj(c -> (char) c)
+            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(frequency);
+    }
+}
+```
+
+---
+
+### Q24. 🟢 🏢 What is the difference between a shallow copy and a deep copy in Java?
+**Answer:**
+- **Shallow Copy:** Creates a new object, but inserts references into it to the objects found in the original. The cloned object and original object share references to the same mutable internal objects. Using `Object.clone()` without overriding usually results in a shallow copy.
+- **Deep Copy:** Creates a new object and recursively copies all objects it references. The cloned object is completely independent of the original object. 
+- **How to achieve Deep Copy:** By manually overriding the `clone()` method to clone nested objects, using serialization (writing to a byte stream and reading back), or using copy constructors.

@@ -1,7 +1,7 @@
 # Bonus: System Design & Architecture
 
 > **Scope:** SOLID, Design Patterns, Scalability, Event-Driven Design, CQRS/Event Sourcing, API Design, CAP Theorem
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 22 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -870,3 +870,102 @@ public class UserProfileService {
 ```
 
 **⚠️ Pitfall:** "Eventual" has no time bound. In practice, define SLAs: "read replicas are consistent within 500ms." Monitor replication lag.
+
+---
+
+### Q21. 🌐 Explain the complete workflow of deployment from a `git push` to production.
+
+**The deployment workflow (CI/CD) automates the process of moving code from a developer's machine to a live production environment securely and reliably — it typically involves source control, continuous integration (build, test, scan), continuous delivery/deployment (bake, deploy), and post-deployment monitoring.**
+
+**End-to-End Workflow:**
+
+1. **Code Commit & Review:**
+   - Developer pushes code to a feature branch (`git push origin feature-A`).
+   - A Pull Request (PR) is raised against the `main` or `develop` branch.
+   - Code reviews and preliminary PR checks (linting, basic tests) run.
+
+2. **Continuous Integration (CI):**
+   - **Trigger:** Merging the PR triggers the CI pipeline (e.g., Jenkins, GitHub Actions, GitLab CI).
+   - **Build:** Code is compiled, dependencies are fetched (e.g., `mvn clean package`).
+   - **Test:** Unit tests and integration tests are executed.
+   - **Scan:** Static Application Security Testing (SAST) and code quality checks (e.g., SonarQube).
+   - **Artifact Creation:** A deployable artifact is built (e.g., a Docker image).
+   - **Publish:** The artifact is pushed to an artifact repository (e.g., AWS ECR, Nexus, Docker Hub).
+
+3. **Continuous Deployment (CD):**
+   - **Environment Provisioning:** Infrastructure as Code (e.g., Terraform) ensures the target environment is ready.
+   - **Deployment Strategy:** Artifact is deployed to staging/production using a deployment strategy (e.g., Rolling Update, Blue-Green, Canary).
+   - **Configuration:** Environment variables and secrets are injected (e.g., via Kubernetes Secrets or AWS Secrets Manager).
+
+4. **Post-Deployment & Monitoring:**
+   - **Sanity/Smoke Tests:** Automated checks run against the live deployment to verify health.
+   - **Observability:** Logs, metrics, and traces are monitored (ELK, Prometheus, Grafana).
+   - **Rollback:** If metrics indicate a failure (e.g., high error rate), an automated rollback is triggered.
+
+| Stage | Tools Often Used | Key Objective |
+|-------|------------------|---------------|
+| Version Control | GitHub, GitLab, Bitbucket | Source code management, peer review |
+| CI (Build/Test) | GitHub Actions, Jenkins, GitLab CI | Catch bugs early, build deployable artifact |
+| Artifact Registry | Docker Hub, AWS ECR, JFrog | Store immutable artifacts securely |
+| CD (Deploy) | ArgoCD, Spinnaker, AWS CodeDeploy | Safely roll out new versions to users |
+| Monitoring | Datadog, Prometheus, Grafana, ELK | Ensure system health, alert on anomalies |
+
+**⚠️ Pitfall:** Deploying directly to production without a staging environment or a phased rollout (like Canary) can lead to widespread outages if a bug slips through testing. Always use immutable artifacts—never rebuild code between environments.
+
+---
+
+### Q22. 🏢 Design a complete AWS-based deployment infrastructure ecosystem for a microservices architecture.
+
+**A robust AWS deployment ecosystem leverages managed services for compute, networking, security, and observability to host microservices at scale — a typical modern architecture uses Amazon EKS (Kubernetes) or ECS, API Gateway for ingress, and RDS/DynamoDB for persistence.**
+
+**AWS Ecosystem Architecture:**
+
+```
+Users ──► Route 53 (DNS) ──► CloudFront (CDN / Edge Cache) ──► AWS WAF (Web App Firewall)
+                                                                       │
+                                                         Internet Gateway (VPC Entry)
+                                                                       │
+                                                       Application Load Balancer (ALB)
+                                                                       │
+┌────────────────────────────────────── VPC ──────────────────────────────────────────┐
+│                                                                                     │
+│ ┌────────── Public Subnet ──────────┐       ┌───────── Private Subnet ──────────┐   │
+│ │                                   │       │                                   │   │
+│ │      NAT Gateway (for outbound)   │◄──────┤        Amazon API Gateway         │   │
+│ │                                   │       │                 │                 │   │
+│ └───────────────────────────────────┘       │                 ▼                 │   │
+│                                             │    Amazon EKS (Kubernetes Cluster)│   │
+│                                             │      ├── Order Service (Pods)     │   │
+│                                             │      ├── User Service (Pods)      │   │
+│                                             │      └── Payment Service (Pods)   │   │
+│                                             │                 │                 │   │
+│ ┌───────── Database Subnet ─────────┐       │                 ▼                 │   │
+│ │                                   │◄──────┤       Internal Load Balancer      │   │
+│ │   Amazon RDS (PostgreSQL) Multi-AZ│       │                 │                 │   │
+│ │   Amazon DynamoDB                 │       │                 ▼                 │   │
+│ │   Amazon ElastiCache (Redis)      │       │     Amazon MSK (Kafka) / SQS      │   │
+│ └───────────────────────────────────┘       └───────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+Observability & Security: AWS CloudWatch (Logs/Metrics), AWS X-Ray (Tracing), AWS Secrets Manager
+```
+
+**Key Component Breakdown:**
+
+| Component | AWS Service | Purpose in the Ecosystem |
+|-----------|-------------|--------------------------|
+| **DNS & CDN** | Route 53, CloudFront | Global routing, caching static assets, reducing latency at the edge. |
+| **Security at Edge** | AWS WAF, Shield | Protects against DDoS, SQL injection, and cross-site scripting (XSS). |
+| **Ingress / Gateway** | ALB, API Gateway | Handles routing, SSL termination, rate limiting, and auth validation (via Cognito/Lambda authorizers). |
+| **Compute** | Amazon EKS (or ECS/Fargate) | Orchestrates containerized microservices, handles auto-scaling (HPA/Cluster Autoscaler), and self-healing. |
+| **Persistence** | Amazon RDS, DynamoDB | Relational (ACID compliance) and NoSQL (high-scale key-value) data storage with Multi-AZ redundancy. |
+| **Caching** | Amazon ElastiCache (Redis) | In-memory cache to offload database reads and store session states. |
+| **Messaging/Async** | Amazon SQS, SNS, MSK | Decouples services, enables event-driven architecture, and handles traffic spikes. |
+| **CI/CD** | CodePipeline, CodeBuild | Automates the build and deploy process directly into EKS. |
+
+**Security Best Practices:**
+- **Private Subnets:** Compute resources (EKS nodes) and Databases must reside in private subnets with no direct internet access. Only load balancers and NAT gateways sit in public subnets.
+- **IAM Roles for Service Accounts (IRSA):** Pods should assume specific IAM roles to access AWS resources (like S3 or DynamoDB), instead of sharing long-lived credentials.
+- **Secrets Management:** Use AWS Secrets Manager, never hardcode credentials in code or ConfigMaps.
+
+**⚠️ Pitfall:** Using a single large RDS instance for all microservices breaks the "database-per-service" pattern. Each microservice should have its own logically separated database or schema to maintain loose coupling.

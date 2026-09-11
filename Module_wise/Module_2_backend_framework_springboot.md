@@ -1,7 +1,7 @@
 # Module 2: Backend Framework (Spring Boot)
 
 > **Scope:** IoC/DI, AOP, Security, Service Discovery, Distributed Tracing, Resilience, REST API Design
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 28 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -1173,3 +1173,55 @@ spring:
 | Data Format | JSON, XML, HTML, plain text | XML only |
 | Security | HTTPS, OAuth2, JWT | WS-Security, SSL |
 | State | Stateless | Can be stateful |
+
+---
+
+### Q26. 🟢 🏢 How do you create a REST Controller and handle CRUD operations in Spring Boot?
+**Answer:**
+- **REST Controller:** Uses the `@RestController` annotation which combines `@Controller` and `@ResponseBody`. It handles incoming HTTP requests.
+- **CRUD Mapping:** Uses standard HTTP methods mapped via annotations (`@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`).
+- **Data Binding:** `@RequestBody` is used to map the JSON payload to a Java object, while `@PathVariable` or `@RequestParam` map URL parameters.
+
+```java
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+
+@RestController
+@RequestMapping("/api/employees")
+public class EmployeeController {
+
+    private final EmployeeService service;
+
+    public EmployeeController(EmployeeService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+        return ResponseEntity.ok(service.save(employee));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployee(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+}
+```
+
+---
+
+### Q27. 🟢 🏢 How does authentication work in a Spring Boot application?
+**Answer:**
+- **Definition:** Authentication is the process of verifying who a user is (identity).
+- **Mechanism (Spring Security):** When a user logs in, Spring Security's `AuthenticationManager` uses an `AuthenticationProvider` (typically using `UserDetailsService`) to fetch the user record from the database. 
+- **Password Hashing:** It compares the hashed password provided by the user (using `BCryptPasswordEncoder`) with the stored hash.
+- **JWT (Stateless):** In modern architectures, upon successful authentication, the server generates a JSON Web Token (JWT) and sends it to the client. The client includes this token in the `Authorization` header for subsequent requests, which the server validates using a custom filter (e.g., `JwtRequestFilter`).
+
+---
+
+### Q28. 🟢 🏢 What is the purpose of a Refresh Token?
+**Answer:**
+- **Problem:** Access tokens (like JWTs) should have a short lifespan (e.g., 15 minutes) for security reasons to mitigate token theft. However, requiring users to log in every 15 minutes is a poor user experience.
+- **Solution:** A **Refresh Token** is issued alongside the access token. It has a much longer lifespan (e.g., 7 days or 30 days). 
+- **Usage:** When the access token expires, the client sends the refresh token to a dedicated authentication endpoint to obtain a new access token without requiring the user's credentials again.
+- **Security:** Refresh tokens are usually stored securely (e.g., in `httpOnly` cookies) and can be revoked by the server if suspicious activity is detected.

@@ -1,7 +1,7 @@
 # Module 3: DBMS (MySQL, PostgreSQL)
 
 > **Scope:** SQL Optimization, JPA/Hibernate, Caching, Indexing, N+1 Problem, Connection Pooling, PostgreSQL
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 22 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -920,3 +920,35 @@ BEGIN
   CLOSE emp_cur;
 END;
 ```
+
+---
+
+### Q21. 🟢 🏢 Write a SQL query to join two tables and explain what Stored Procedures are.
+**Answer:**
+- **Stored Procedure:** A prepared SQL code that you can save so the code can be reused over and over again. It is compiled and stored in the database, reducing network traffic and improving performance.
+- **Joins:** Used to combine rows from two or more tables based on a related column between them (INNER, LEFT, RIGHT, FULL).
+
+```sql
+-- Inner Join Example
+SELECT e.employee_id, e.first_name, d.department_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+
+-- Stored Procedure Example (Oracle/MSSQL style)
+CREATE PROCEDURE GetEmployeesByDept (@DeptId INT)
+AS
+BEGIN
+    SELECT * FROM employees WHERE department_id = @DeptId;
+END;
+```
+
+---
+
+### Q22. 🟢 🏢 What is the `UNION` operator in SQL?
+**Answer:**
+- **Purpose:** The `UNION` operator is used to combine the result sets of two or more `SELECT` statements into a single result set.
+- **Rules:** 
+  1. Every `SELECT` statement within `UNION` must have the same number of columns.
+  2. The columns must have similar data types.
+  3. The columns in every `SELECT` statement must be in the same order.
+- **UNION vs UNION ALL:** `UNION` removes duplicate rows from the final result set, whereas `UNION ALL` includes all duplicates, making it faster since it skips the distinct sort operation.

@@ -47,7 +47,7 @@ Java-interview-prep/
 
 ## 2. Module Taxonomy
 
-All questions in this repository belong to one of **11 modules**. When adding, moving, or tagging a question, you **must** classify it into exactly one of these modules.
+All questions in this repository belong to one of **12 modules**. When adding, moving, or tagging a question, you **must** classify it into exactly one of these modules.
 
 | # | Module ID | Module Name | Key Topics | File |
 |---|-----------|-------------|-----------|------|
@@ -62,6 +62,7 @@ All questions in this repository belong to one of **11 modules**. When adding, m
 | 9 | `DSA` | Data Structures & Algorithms | Core Algorithms, Complexity Analysis, Custom DS Design | `Module_wise/Module_9_DSA.md` |
 | 10 | `SYSTEM_DESIGN` | System Design & Architecture (Bonus) | SOLID, Scalability, CQRS, Event Sourcing, CAP Theorem | `Module_wise/Bonus_System_Design.md` |
 | 11 | `SCENARIO_BASED` | Scenario-Based Questions (Bonus 2) | Troubleshooting, Bottlenecks, Architecture Trade-offs | `Module_wise/Bonus_2_Scenario_Based.md` |
+| 12 | `PRODUCTION_DEBUGGING` | Production Debugging (Bonus 3) | Observability, Heap Dumps, Latency, Connection Pools | `Module_wise/Bonus_3_Production_Debugging.md` |
 
 ---
 
@@ -251,10 +252,15 @@ Use this table as the **source of truth** when deciding question priority, order
 
 ### 6.4 Reorganizing or Restructuring
 
-- The `Module_wise/` directory must maintain exactly **11 files** (9 modules + 2 bonus).
+- The `Module_wise/` directory must maintain exactly **12 files** (9 modules + 3 bonus).
 - Each module file header must include: Scope, Question count, Critical count, Coverage tags, and sort order note.
 - Company files must remain in their respective subdirectory. Do not merge company files across companies.
 - The `Master/Interview_QA_Master.md` must remain a **flat, topic-grouped** master document.
+
+### 6.5 Standardizing Definitions
+
+- **Use Universal Standard Definitions:** When providing definitions for concepts, always use the standard, ideal, and universally accepted definition popular across the industry or in official documentation.
+- **Maintain Consistency:** There shouldn't be any difference in how a concept is defined across different files. Ensure the chosen standard definition is identical wherever it appears in the repository.
 
 ---
 
@@ -331,8 +337,9 @@ Before finalizing changes to any file in this repository, verify:
 - [ ] Existing comments, pitfalls, and cross-references are preserved
 - [ ] Company files maintain frequency-based ordering (not topic-based)
 - [ ] Module files maintain the 3-tier structure (🔴 → 🟡 → 🟢)
+- [ ] Definitions provided are standard, universally accepted, and consistent across all files
 
 ---
 
 > *This instruction file governs all AI-assisted modifications to the `Java-interview-prep` repository.*
-> *Last updated: September 2026 | 10 company datasets | 11 modules | 449+ questions tracked*
+> *Last updated: September 2026 | 10 company datasets | 12 modules | 474+ questions tracked*

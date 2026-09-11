@@ -1,7 +1,7 @@
 # Module 5: Frontend Framework (Angular)
 
 > **Scope:** Angular Lifecycle, State Management, Rendering Strategies, Component Architecture, Backend Integration, RxJS
-> **Questions:** 20 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
+> **Questions:** 25 | **Critical:** 5 | **Coverage:** Product & Service-Based Companies | Sorted by interview frequency (descending)
 
 ---
 
@@ -1044,3 +1044,51 @@ export class TabContainerComponent implements AfterViewInit, AfterContentInit {
 ```
 
 **⚠️ Pitfall:** `@ViewChild` is available in `ngAfterViewInit`, NOT in `ngOnInit`. `@ContentChild` is available in `ngAfterContentInit`.
+
+---
+
+### Q21. 🟢 🏢 How do you integrate a Spring Boot backend with an Angular frontend?
+**Answer:**
+- **CORS Configuration:** The Spring Boot backend must enable Cross-Origin Resource Sharing (CORS) to accept requests from the Angular application (often running on a different port like `localhost:4200`).
+- **Angular Services:** Create an Angular service using `HttpClient` to make asynchronous HTTP requests (GET, POST) to the Spring Boot REST endpoints.
+- **RxJS Observables:** The `HttpClient` methods return Observables, which the Angular components subscribe to in order to receive the JSON data asynchronously and bind it to the UI.
+
+---
+
+### Q22. 🟢 🏢 How does Dependency Injection work in Angular?
+**Answer:**
+- **Definition:** Dependency Injection (DI) is a design pattern where a class requests dependencies from external sources rather than creating them itself.
+- **Providers & Injectors:** Angular has its own DI framework. You register a provider (typically a Service) in a module (`@NgModule`) or directly on the service using `@Injectable({ providedIn: 'root' })`.
+- **Injection:** You inject the dependency into a component or another service by declaring it in the constructor. Angular's Injector looks up the provider and passes the instance to the component.
+- **Singleton:** Services provided at the `root` level are singletons; the same instance is shared across the entire application.
+
+---
+
+### Q23. 🟢 🏢 How do parent and child components communicate in Angular?
+**Answer:**
+- **Parent to Child:** Using the `@Input()` decorator. The parent binds data to the child's input property in the template.
+  - *Example:* `<app-child [data]="parentData"></app-child>`
+- **Child to Parent:** Using the `@Output()` decorator with an `EventEmitter`. The child emits an event, and the parent listens for it.
+  - *Example:* `<app-child (dataChange)="onDataChange($event)"></app-child>`
+- **Parent to Child (ViewChild):** A parent can use `@ViewChild()` to get a reference to the child component instance and directly call its methods or access properties.
+- **Shared Service:** Both components can inject a shared service (often using `BehaviorSubject`) to communicate if they are deeply nested or not directly related.
+
+---
+
+### Q24. 🟢 🏢 How do you achieve authorization in Angular?
+**Answer:**
+- **Definition:** Authorization determines what an authenticated user is allowed to see or do (e.g., Admin vs User roles).
+- **Route Guards:** Use Angular Route Guards (`CanActivate`, `CanMatch`) to prevent unauthorized users from navigating to specific routes based on their role.
+- **Structural Directives:** Use `*ngIf` or create a custom structural directive (e.g., `*appHasRole="['ADMIN']"`) to hide or show UI elements (buttons, links) based on the user's permissions.
+- **Interceptor:** While primarily for authentication, an HTTP Interceptor handles `403 Forbidden` responses from the backend, redirecting unauthorized API attempts to an error page or login screen.
+
+---
+
+### Q25. 🟢 🏢 What is the `...` (spread/rest) operator in JavaScript/TypeScript?
+**Answer:**
+- **Spread Operator:** Expands an iterable (like an array or object) into individual elements.
+  - *Array Copy:* `let newArr = [...oldArr];` (creates a shallow copy).
+  - *Object Merge:* `let merged = {...obj1, ...obj2};`.
+- **Rest Parameter:** Collects multiple elements and condenses them into a single array element. Used in function parameters.
+  - *Function definition:* `function sum(...numbers) { return numbers.reduce((a, b) => a + b); }`
+- **Summary:** The spread operator "unpacks" elements, while the rest parameter "packs" elements into an array.
